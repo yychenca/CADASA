@@ -46,10 +46,10 @@
         }
 
         .slide svg {
-            width: 90vw;
-            height: 90vh;
-            max-width: 1600px;
-            max-height: 900px;
+            width: 95vw;
+            height: 95vh;
+            max-width: 1920px;
+            max-height: 1080px;
         }
 
         @keyframes glitchIn {
@@ -124,33 +124,71 @@
                     <pattern id="grid1" width="40" height="40" patternUnits="userSpaceOnUse">
                         <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#003300" stroke-width="1"/>
                     </pattern>
+                    
+                    <!-- Matrix rain animation -->
+                    <style>
+                        @keyframes matrixFall {
+                            from {
+                                transform: translateY(-100px);
+                                opacity: 1;
+                            }
+                            to {
+                                transform: translateY(1200px);
+                                opacity: 0;
+                            }
+                        }
+                        .matrix-char {
+                            animation: matrixFall linear infinite;
+                        }
+                    </style>
                 </defs>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <!-- Matrix rain effect -->
-                <text x="100" y="100" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01001000 01001111 01010111</text>
-                <text x="300" y="200" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01001101 01000001 01000011</text>
-                <text x="500" y="150" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01001000 01001001 01001110</text>
-                <text x="700" y="250" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01000101 01010011</text>
-                <text x="900" y="180" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01000111 01000001 01001001</text>
-                <text x="1100" y="220" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01001110</text>
+                <!-- Animated Matrix rain effect -->
+                <g opacity="0.3">
+                    <text x="100" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0s;">01001000</text>
+                    <text x="250" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 1s;">01001111</text>
+                    <text x="400" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 7s; animation-delay: 0.5s;">01010111</text>
+                    <text x="550" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 2s;">01001101</text>
+                    <text x="700" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 1.5s;">01000001</text>
+                    <text x="850" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 0.8s;">01000011</text>
+                    <text x="1000" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.5s;">01001000</text>
+                    <text x="1150" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.3s;">01001001</text>
+                    <text x="1300" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 1.8s;">01001110</text>
+                    <text x="1450" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 7s; animation-delay: 1.2s;">01000101</text>
+                    <text x="1600" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.2s;">01010011</text>
+                    <text x="1750" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.7s;">01000111</text>
+                    
+                    <!-- Second wave -->
+                    <text x="180" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 3s;">01000001</text>
+                    <text x="330" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.5s;">01001001</text>
+                    <text x="480" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4s;">01001110</text>
+                    <text x="630" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.2s;">10101010</text>
+                    <text x="780" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 4.5s;">11001100</text>
+                    <text x="930" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.8s;">10110110</text>
+                    <text x="1080" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4.2s;">01110111</text>
+                    <text x="1230" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 3.6s;">10001000</text>
+                    <text x="1380" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4.8s;">11110000</text>
+                    <text x="1530" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.3s;">00110011</text>
+                    <text x="1680" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 4.6s;">10101111</text>
+                </g>
                 
                 <!-- Main title -->
-                <text x="960" y="400" text-anchor="middle" fill="#00ff00" font-size="72" font-family="monospace" font-weight="bold">HOW MACHINES GAIN INTELLIGENCE?</text>
+                <text x="960" y="400" text-anchor="middle" fill="#00ff00" font-size="80" font-family="monospace" font-weight="bold">HOW MACHINES GAIN INTELLIGENCE?</text>
                 
                 <!-- Robot icon -->
                 <g transform="translate(960, 540)">
-                    <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="#00ff00" stroke-width="2"/>
-                    <circle cx="-15" cy="-15" r="5" fill="#00ff00"/>
-                    <circle cx="15" cy="-15" r="5" fill="#00ff00"/>
-                    <path d="M -20 10 Q 0 20 20 10" fill="none" stroke="#00ff00" stroke-width="2"/>
+                    <rect x="-50" y="-50" width="100" height="100" fill="none" stroke="#00ff00" stroke-width="3"/>
+                    <circle cx="-20" cy="-20" r="8" fill="#00ff00"/>
+                    <circle cx="20" cy="-20" r="8" fill="#00ff00"/>
+                    <path d="M -25 15 Q 0 30 25 15" fill="none" stroke="#00ff00" stroke-width="3"/>
                 </g>
                 
                 <!-- Subtitle -->
-                <text x="960" y="650" text-anchor="middle" fill="#00ff00" font-size="30" font-family="monospace" opacity="0.8">From Pattern Recognition to Reasoning</text>
+                <text x="960" y="680" text-anchor="middle" fill="#00ff00" font-size="36" font-family="monospace" opacity="0.9">From Pattern Recognition to Reasoning</text>
                 
                 <!-- Author info -->
-                <text x="960" y="900" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">Chris Chen, Sr. Applied Scientist, Microsoft</text>
+                <text x="960" y="920" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">Chris Chen, Sr. Applied Scientist, Microsoft</text>
             </svg>
         </div>
 
@@ -160,39 +198,39 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">THE QUEST FOR MACHINE INTELLIGENCE</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">THE QUEST FOR MACHINE INTELLIGENCE</text>
                 
                 <!-- AI Evolution Diagram -->
                 <!-- Narrow AI -->
-                <rect x="310" y="340" width="300" height="120" fill="none" stroke="#00ff00" stroke-width="2"/>
-                <text x="460" y="380" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">NARROW AI</text>
-                <text x="460" y="410" text-anchor="middle" fill="#00aa00" font-size="18" font-family="monospace">Specialized Tasks</text>
-                <text x="460" y="435" text-anchor="middle" fill="#00aa00" font-size="16" font-family="monospace">Chess, Image Recognition</text>
+                <rect x="260" y="320" width="350" height="140" fill="none" stroke="#00ff00" stroke-width="3"/>
+                <text x="435" y="365" text-anchor="middle" fill="#00ff00" font-size="32" font-family="monospace" font-weight="bold">NARROW AI</text>
+                <text x="435" y="400" text-anchor="middle" fill="#00aa00" font-size="22" font-family="monospace">Specialized Tasks</text>
+                <text x="435" y="430" text-anchor="middle" fill="#00aa00" font-size="20" font-family="monospace">Chess, Image Recognition</text>
                 
                 <!-- Arrow -->
-                <path d="M 610 400 L 710 400" stroke="#00ff00" stroke-width="2" fill="none"/>
-                <polygon points="710,395 720,400 710,405" fill="#00ff00"/>
+                <path d="M 610 390 L 710 390" stroke="#00ff00" stroke-width="3" fill="none"/>
+                <polygon points="710,385 720,390 710,395" fill="#00ff00"/>
                 
                 <!-- General AI -->
-                <rect x="810" y="340" width="300" height="120" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="960" y="380" text-anchor="middle" fill="#00ffff" font-size="28" font-family="monospace">GENERAL AI (AGI)</text>
-                <text x="960" y="410" text-anchor="middle" fill="#00aaaa" font-size="18" font-family="monospace">Human-like Versatility</text>
-                <text x="960" y="435" text-anchor="middle" fill="#00aaaa" font-size="16" font-family="monospace">Cross-domain Reasoning</text>
+                <rect x="785" y="320" width="350" height="140" fill="none" stroke="#00ffff" stroke-width="3"/>
+                <text x="960" y="365" text-anchor="middle" fill="#00ffff" font-size="32" font-family="monospace" font-weight="bold">GENERAL AI (AGI)</text>
+                <text x="960" y="400" text-anchor="middle" fill="#00aaaa" font-size="22" font-family="monospace">Human-like Versatility</text>
+                <text x="960" y="430" text-anchor="middle" fill="#00aaaa" font-size="20" font-family="monospace">Cross-domain Reasoning</text>
                 
                 <!-- Arrow -->
-                <path d="M 1110 400 L 1210 400" stroke="#00ff00" stroke-width="2" fill="none"/>
-                <polygon points="1210,395 1220,400 1210,405" fill="#00ff00"/>
+                <path d="M 1135 390 L 1235 390" stroke="#00ff00" stroke-width="3" fill="none"/>
+                <polygon points="1235,385 1245,390 1235,395" fill="#00ff00"/>
                 
                 <!-- Super AI -->
-                <rect x="1310" y="340" width="300" height="120" fill="none" stroke="#ffff00" stroke-width="2"/>
-                <text x="1460" y="380" text-anchor="middle" fill="#ffff00" font-size="28" font-family="monospace">SUPER AI</text>
-                <text x="1460" y="410" text-anchor="middle" fill="#aaaa00" font-size="18" font-family="monospace">Beyond Human</text>
-                <text x="1460" y="435" text-anchor="middle" fill="#aaaa00" font-size="16" font-family="monospace">Transcendent Intelligence</text>
+                <rect x="1310" y="320" width="350" height="140" fill="none" stroke="#ffff00" stroke-width="3"/>
+                <text x="1485" y="365" text-anchor="middle" fill="#ffff00" font-size="32" font-family="monospace" font-weight="bold">SUPER AI</text>
+                <text x="1485" y="400" text-anchor="middle" fill="#aaaa00" font-size="22" font-family="monospace">Beyond Human</text>
+                <text x="1485" y="430" text-anchor="middle" fill="#aaaa00" font-size="20" font-family="monospace">Transcendent Intelligence</text>
                 
                 <!-- Key Insight -->
-                <rect x="560" y="720" width="800" height="100" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="760" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace" font-weight="bold">KEY INSIGHT:</text>
-                <text x="960" y="795" text-anchor="middle" fill="#00ffff" font-size="26" font-family="monospace">The path to AGI is through LANGUAGE</text>
+                <rect x="460" y="680" width="1000" height="120" fill="#001100" stroke="#00ff00" stroke-width="3"/>
+                <text x="960" y="730" text-anchor="middle" fill="#00ff00" font-size="30" font-family="monospace" font-weight="bold">KEY INSIGHT:</text>
+                <text x="960" y="770" text-anchor="middle" fill="#00ffff" font-size="32" font-family="monospace">The path to AGI is through LANGUAGE</text>
             </svg>
         </div>
 
@@ -202,42 +240,42 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">WHY LANGUAGE?</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">WHY LANGUAGE?</text>
                 
                 <!-- Brain-Language Network -->
                 <!-- Central circle -->
-                <circle cx="960" cy="400" r="80" fill="none" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="405" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">LANGUAGE</text>
+                <circle cx="960" cy="400" r="100" fill="none" stroke="#00ff00" stroke-width="3"/>
+                <text x="960" y="410" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace" font-weight="bold">LANGUAGE</text>
                 
                 <!-- Knowledge node -->
-                <circle cx="660" cy="250" r="50" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="660" y="255" text-anchor="middle" fill="#00ffff" font-size="16" font-family="monospace">KNOWLEDGE</text>
-                <line x1="710" y1="280" x2="880" y2="360" stroke="#00ff00" stroke-width="1" opacity="0.5"/>
+                <circle cx="660" cy="250" r="60" fill="none" stroke="#00ffff" stroke-width="2"/>
+                <text x="660" y="258" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">KNOWLEDGE</text>
+                <line x1="710" y1="285" x2="875" y2="355" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
                 
                 <!-- Reasoning node -->
-                <circle cx="1260" cy="250" r="50" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="1260" y="255" text-anchor="middle" fill="#00ffff" font-size="16" font-family="monospace">REASONING</text>
-                <line x1="1210" y1="280" x2="1040" y2="360" stroke="#00ff00" stroke-width="1" opacity="0.5"/>
+                <circle cx="1260" cy="250" r="60" fill="none" stroke="#00ffff" stroke-width="2"/>
+                <text x="1260" y="258" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">REASONING</text>
+                <line x1="1210" y1="285" x2="1045" y2="355" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
                 
                 <!-- Culture node -->
-                <circle cx="660" cy="550" r="50" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="660" y="555" text-anchor="middle" fill="#00ffff" font-size="16" font-family="monospace">CULTURE</text>
-                <line x1="710" y1="520" x2="880" y2="440" stroke="#00ff00" stroke-width="1" opacity="0.5"/>
+                <circle cx="660" cy="550" r="60" fill="none" stroke="#00ffff" stroke-width="2"/>
+                <text x="660" y="558" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">CULTURE</text>
+                <line x1="710" y1="515" x2="875" y2="445" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
                 
                 <!-- Logic node -->
-                <circle cx="1260" cy="550" r="50" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="1260" y="555" text-anchor="middle" fill="#00ffff" font-size="16" font-family="monospace">LOGIC</text>
-                <line x1="1210" y1="520" x2="1040" y2="440" stroke="#00ff00" stroke-width="1" opacity="0.5"/>
+                <circle cx="1260" cy="550" r="60" fill="none" stroke="#00ffff" stroke-width="2"/>
+                <text x="1260" y="558" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">LOGIC</text>
+                <line x1="1210" y1="515" x2="1045" y2="445" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
                 
                 <!-- Key Points -->
-                <text x="200" y="700" fill="#00ff00" font-size="24" font-family="monospace">• Compositional: Infinite expressions from finite elements</text>
-                <text x="200" y="750" fill="#00ff00" font-size="24" font-family="monospace">• Contains implicit logic and world models</text>
-                <text x="200" y="800" fill="#00ff00" font-size="24" font-family="monospace">• Bridges perception, reasoning, and action</text>
-                <text x="200" y="850" fill="#00ff00" font-size="24" font-family="monospace">• Encodes human knowledge and culture</text>
+                <text x="180" y="710" fill="#00ff00" font-size="28" font-family="monospace">• Compositional: Infinite expressions from finite elements</text>
+                <text x="180" y="760" fill="#00ff00" font-size="28" font-family="monospace">• Contains implicit logic and world models</text>
+                <text x="180" y="810" fill="#00ff00" font-size="28" font-family="monospace">• Bridges perception, reasoning, and action</text>
+                <text x="180" y="860" fill="#00ff00" font-size="28" font-family="monospace">• Encodes human knowledge and culture</text>
                 
                 <!-- Quote -->
-                <rect x="460" y="920" width="1000" height="80" fill="#001100" stroke="#00ff00" stroke-width="1" stroke-dasharray="5,5"/>
-                <text x="960" y="970" text-anchor="middle" fill="#00ffff" font-size="22" font-family="monospace" font-style="italic">"To understand language is to understand the world"</text>
+                <rect x="360" y="920" width="1200" height="90" fill="#001100" stroke="#00ff00" stroke-width="2" stroke-dasharray="5,5"/>
+                <text x="960" y="975" text-anchor="middle" fill="#00ffff" font-size="26" font-family="monospace" font-style="italic">"To understand language is to understand the world"</text>
             </svg>
         </div>
 
@@ -247,52 +285,52 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">LANGUAGE MODELS ARE BAYESIANS</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">LANGUAGE MODELS ARE BAYESIANS</text>
                 
                 <!-- Example sentence -->
-                <rect x="260" y="200" width="1400" height="140" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="250" text-anchor="middle" fill="#00ffff" font-size="32" font-family="monospace">"A girl saw a boy with a telescope"</text>
-                <text x="960" y="300" text-anchor="middle" fill="#00aa00" font-size="20" font-family="monospace">Two possible interpretations - but humans choose one effortlessly</text>
+                <rect x="210" y="190" width="1500" height="150" fill="#001100" stroke="#00ff00" stroke-width="3"/>
+                <text x="960" y="245" text-anchor="middle" fill="#00ffff" font-size="36" font-family="monospace">"A girl saw a boy with a telescope"</text>
+                <text x="960" y="300" text-anchor="middle" fill="#00aa00" font-size="24" font-family="monospace">Two possible interpretations - but humans choose one effortlessly</text>
                 
                 <!-- Interpretation 1 -->
-                <text x="600" y="420" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">INTERPRETATION 1:</text>
+                <text x="600" y="420" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">INTERPRETATION 1:</text>
                 <!-- Girl figure -->
-                <circle cx="500" cy="480" r="15" fill="none" stroke="#00ff00" stroke-width="2"/>
-                <line x1="500" y1="495" x2="500" y2="540" stroke="#00ff00" stroke-width="2"/>
-                <text x="500" y="570" text-anchor="middle" fill="#00ff00" font-size="16" font-family="monospace">GIRL</text>
+                <circle cx="500" cy="480" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
+                <line x1="500" y1="500" x2="500" y2="550" stroke="#00ff00" stroke-width="3"/>
+                <text x="500" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">GIRL</text>
                 <!-- Telescope -->
-                <rect x="525" y="500" width="40" height="10" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="545" y="530" text-anchor="middle" fill="#00ffff" font-size="14" font-family="monospace">telescope</text>
+                <rect x="525" y="505" width="50" height="12" fill="none" stroke="#00ffff" stroke-width="3"/>
+                <text x="550" y="540" text-anchor="middle" fill="#00ffff" font-size="18" font-family="monospace">telescope</text>
                 <!-- Arrow -->
-                <path d="M 565 505 L 635 505" stroke="#ffff00" stroke-width="2" stroke-dasharray="5,5"/>
-                <polygon points="635,500 645,505 635,510" fill="#ffff00"/>
+                <path d="M 575 510 L 635 510" stroke="#ffff00" stroke-width="3" stroke-dasharray="5,5"/>
+                <polygon points="635,505 645,510 635,515" fill="#ffff00"/>
                 <!-- Boy -->
-                <circle cx="700" cy="480" r="15" fill="none" stroke="#00ff00" stroke-width="2"/>
-                <line x1="700" y1="495" x2="700" y2="540" stroke="#00ff00" stroke-width="2"/>
-                <text x="700" y="570" text-anchor="middle" fill="#00ff00" font-size="16" font-family="monospace">BOY</text>
+                <circle cx="700" cy="480" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
+                <line x1="700" y1="500" x2="700" y2="550" stroke="#00ff00" stroke-width="3"/>
+                <text x="700" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">BOY</text>
                 
                 <!-- Interpretation 2 -->
-                <text x="1320" y="420" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">INTERPRETATION 2:</text>
+                <text x="1320" y="420" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">INTERPRETATION 2:</text>
                 <!-- Girl -->
-                <circle cx="1220" cy="480" r="15" fill="none" stroke="#00ff00" stroke-width="2"/>
-                <line x1="1220" y1="495" x2="1220" y2="540" stroke="#00ff00" stroke-width="2"/>
-                <text x="1220" y="570" text-anchor="middle" fill="#00ff00" font-size="16" font-family="monospace">GIRL</text>
+                <circle cx="1220" cy="480" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
+                <line x1="1220" y1="500" x2="1220" y2="550" stroke="#00ff00" stroke-width="3"/>
+                <text x="1220" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">GIRL</text>
                 <!-- Arrow seeing -->
-                <path d="M 1255 495 L 1355 495" stroke="#ffff00" stroke-width="2" stroke-dasharray="5,5"/>
+                <path d="M 1255 495 L 1355 495" stroke="#ffff00" stroke-width="3" stroke-dasharray="5,5"/>
                 <polygon points="1355,490 1365,495 1355,500" fill="#ffff00"/>
                 <!-- Boy with telescope -->
-                <circle cx="1420" cy="480" r="15" fill="none" stroke="#00ff00" stroke-width="2"/>
-                <line x1="1420" y1="495" x2="1420" y2="540" stroke="#00ff00" stroke-width="2"/>
-                <rect x="1445" y="500" width="40" height="10" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="1420" y="570" text-anchor="middle" fill="#00ff00" font-size="16" font-family="monospace">BOY</text>
-                <text x="1465" y="530" text-anchor="middle" fill="#00ffff" font-size="14" font-family="monospace">telescope</text>
+                <circle cx="1420" cy="480" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
+                <line x1="1420" y1="500" x2="1420" y2="550" stroke="#00ff00" stroke-width="3"/>
+                <rect x="1445" y="505" width="50" height="12" fill="none" stroke="#00ffff" stroke-width="3"/>
+                <text x="1420" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">BOY</text>
+                <text x="1470" y="540" text-anchor="middle" fill="#00ffff" font-size="18" font-family="monospace">telescope</text>
                 
                 <!-- Bayes Formula -->
-                <rect x="460" y="720" width="1000" height="100" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="760" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">P(interpretation | context) = P(context | interpretation) × P(interpretation) / P(context)</text>
-                <text x="960" y="795" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">We naturally compute probabilities to resolve ambiguity</text>
+                <rect x="360" y="720" width="1200" height="110" fill="#001100" stroke="#00ff00" stroke-width="3"/>
+                <text x="960" y="765" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">P(interpretation | context) = P(context | interpretation) × P(interpretation) / P(context)</text>
+                <text x="960" y="805" text-anchor="middle" fill="#00ffff" font-size="24" font-family="monospace">We naturally compute probabilities to resolve ambiguity</text>
                 
-                <text x="960" y="950" text-anchor="middle" fill="#00ff00" font-size="22" font-family="monospace">Language models learn these probability distributions from data</text>
+                <text x="960" y="960" text-anchor="middle" fill="#00ff00" font-size="26" font-family="monospace">Language models learn these probability distributions from data</text>
             </svg>
         </div>
 
@@ -373,52 +411,52 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">TWO PATHS TO UNDERSTANDING</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">TWO SIDES OF THE SAME COIN: BERT &amp; GPT</text>
                 
                 <!-- BERT Side -->
-                <rect x="280" y="200" width="400" height="500" fill="#000033" stroke="#0099ff" stroke-width="2"/>
-                <text x="480" y="250" text-anchor="middle" fill="#0099ff" font-size="36" font-family="monospace" font-weight="bold">BERT</text>
-                <text x="480" y="300" text-anchor="middle" fill="#00ffff" font-size="24" font-family="monospace">Bidirectional Understanding</text>
+                <rect x="240" y="200" width="440" height="520" fill="#000033" stroke="#0099ff" stroke-width="3"/>
+                <text x="460" y="250" text-anchor="middle" fill="#0099ff" font-size="42" font-family="monospace" font-weight="bold">BERT</text>
+                <text x="460" y="300" text-anchor="middle" fill="#00ffff" font-size="28" font-family="monospace">Bidirectional Understanding</text>
                 
                 <!-- Masked example -->
-                <rect x="300" y="350" width="360" height="60" fill="#001144" stroke="#0099ff" stroke-width="1"/>
-                <text x="480" y="385" text-anchor="middle" fill="#ffffff" font-size="20" font-family="monospace">The cat sat on the [MASK]</text>
-                <text x="480" y="415" text-anchor="middle" fill="#00ff00" font-size="18" font-family="monospace">→ mat, floor, chair...</text>
+                <rect x="260" y="350" width="400" height="80" fill="#001144" stroke="#0099ff" stroke-width="2"/>
+                <text x="460" y="390" text-anchor="middle" fill="#ffffff" font-size="24" font-family="monospace">The cat sat on the [MASK]</text>
+                <text x="460" y="420" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">→ mat, floor, chair...</text>
                 
                 <!-- Bidirectional arrows -->
-                <path d="M 380 480 L 440 480" stroke="#0099ff" stroke-width="2"/>
-                <polygon points="440,475 450,480 440,485" fill="#0099ff"/>
-                <path d="M 580 480 L 520 480" stroke="#0099ff" stroke-width="2"/>
-                <polygon points="520,475 510,480 520,485" fill="#0099ff"/>
-                <text x="480" y="485" text-anchor="middle" fill="#0099ff" font-size="16">←CONTEXT→</text>
+                <path d="M 360 490 L 420 490" stroke="#0099ff" stroke-width="3"/>
+                <polygon points="420,485 430,490 420,495" fill="#0099ff"/>
+                <path d="M 560 490 L 500 490" stroke="#0099ff" stroke-width="3"/>
+                <polygon points="500,485 490,490 500,495" fill="#0099ff"/>
+                <text x="460" y="495" text-anchor="middle" fill="#0099ff" font-size="18">←CONTEXT→</text>
                 
                 <!-- Features -->
-                <text x="480" y="550" text-anchor="middle" fill="#0099ff" font-size="20" font-family="monospace">✓ Classification tasks</text>
-                <text x="480" y="580" text-anchor="middle" fill="#0099ff" font-size="20" font-family="monospace">✓ Full context awareness</text>
-                <text x="480" y="610" text-anchor="middle" fill="#0099ff" font-size="20" font-family="monospace">✓ Understanding focus</text>
+                <text x="460" y="560" text-anchor="middle" fill="#0099ff" font-size="24" font-family="monospace">✓ Classification tasks</text>
+                <text x="460" y="595" text-anchor="middle" fill="#0099ff" font-size="24" font-family="monospace">✓ Full context awareness</text>
+                <text x="460" y="630" text-anchor="middle" fill="#0099ff" font-size="24" font-family="monospace">✓ Understanding focus</text>
                 
                 <!-- GPT Side -->
-                <rect x="1240" y="200" width="400" height="500" fill="#003300" stroke="#00ff00" stroke-width="2"/>
-                <text x="1440" y="250" text-anchor="middle" fill="#00ff00" font-size="36" font-family="monospace" font-weight="bold">GPT</text>
-                <text x="1440" y="300" text-anchor="middle" fill="#00ffff" font-size="24" font-family="monospace">Autoregressive Generation</text>
+                <rect x="1240" y="200" width="440" height="520" fill="#003300" stroke="#00ff00" stroke-width="3"/>
+                <text x="1460" y="250" text-anchor="middle" fill="#00ff00" font-size="42" font-family="monospace" font-weight="bold">GPT</text>
+                <text x="1460" y="300" text-anchor="middle" fill="#00ffff" font-size="28" font-family="monospace">Autoregressive Generation</text>
                 
                 <!-- Generation example -->
-                <rect x="1260" y="350" width="360" height="60" fill="#001100" stroke="#00ff00" stroke-width="1"/>
-                <text x="1440" y="385" text-anchor="middle" fill="#ffffff" font-size="20" font-family="monospace">The cat sat on the...</text>
-                <text x="1440" y="415" text-anchor="middle" fill="#00ff00" font-size="18" font-family="monospace">→ mat (next word)</text>
+                <rect x="1260" y="350" width="400" height="80" fill="#001100" stroke="#00ff00" stroke-width="2"/>
+                <text x="1460" y="390" text-anchor="middle" fill="#ffffff" font-size="24" font-family="monospace">The cat sat on the...</text>
+                <text x="1460" y="420" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">→ mat (next word)</text>
                 
                 <!-- Left to right arrow -->
-                <path d="M 1340 480 L 1540 480" stroke="#00ff00" stroke-width="2"/>
-                <polygon points="1540,475 1550,480 1540,485" fill="#00ff00"/>
-                <text x="1440" y="470" text-anchor="middle" fill="#00ff00" font-size="16">LEFT → RIGHT</text>
+                <path d="M 1340 490 L 1560 490" stroke="#00ff00" stroke-width="3"/>
+                <polygon points="1560,485 1570,490 1560,495" fill="#00ff00"/>
+                <text x="1460" y="475" text-anchor="middle" fill="#00ff00" font-size="18">LEFT → RIGHT</text>
                 
                 <!-- Features -->
-                <text x="1440" y="550" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">✓ Text generation</text>
-                <text x="1440" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">✓ Natural conversation</text>
-                <text x="1440" y="610" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">✓ Creative writing</text>
+                <text x="1460" y="560" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">✓ Text generation</text>
+                <text x="1460" y="595" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">✓ Natural conversation</text>
+                <text x="1460" y="630" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">✓ Creative writing</text>
                 
                 <!-- Winner indicator -->
-                <text x="960" y="850" text-anchor="middle" fill="#ffff00" font-size="28" font-family="monospace">⚡ GPT's approach proved more scalable for general intelligence</text>
+                <text x="960" y="870" text-anchor="middle" fill="#ffff00" font-size="32" font-family="monospace">⚡ GPT's approach proved more scalable for general intelligence</text>
             </svg>
         </div>
 
@@ -476,42 +514,42 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">EMERGENT ABILITIES</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">EMERGENT ABILITIES</text>
                 
-                <text x="960" y="200" text-anchor="middle" fill="#00ffff" font-size="28" font-family="monospace">As models scale, unexpected capabilities emerge:</text>
+                <text x="960" y="200" text-anchor="middle" fill="#00ffff" font-size="32" font-family="monospace">As models scale, unexpected capabilities emerge:</text>
                 
                 <!-- Small model -->
-                <circle cx="560" cy="350" r="30" fill="none" stroke="#666666" stroke-width="2"/>
-                <text x="560" y="355" text-anchor="middle" fill="#666666" font-size="16">Small</text>
-                <text x="560" y="410" text-anchor="middle" fill="#666666" font-size="18">Pattern matching</text>
+                <circle cx="560" cy="350" r="40" fill="none" stroke="#666666" stroke-width="2"/>
+                <text x="560" y="355" text-anchor="middle" fill="#666666" font-size="20">Small</text>
+                <text x="560" y="420" text-anchor="middle" fill="#666666" font-size="22">Pattern matching</text>
                 
                 <!-- Medium model -->
-                <circle cx="960" cy="350" r="50" fill="none" stroke="#00aa00" stroke-width="2"/>
-                <text x="960" y="355" text-anchor="middle" fill="#00aa00" font-size="20">Medium</text>
-                <text x="960" y="430" text-anchor="middle" fill="#00aa00" font-size="18">Basic reasoning</text>
+                <circle cx="960" cy="350" r="60" fill="none" stroke="#00aa00" stroke-width="3"/>
+                <text x="960" y="355" text-anchor="middle" fill="#00aa00" font-size="24">Medium</text>
+                <text x="960" y="440" text-anchor="middle" fill="#00aa00" font-size="22">Basic reasoning</text>
                 
                 <!-- Large model -->
-                <circle cx="1360" cy="350" r="80" fill="none" stroke="#00ff00" stroke-width="3"/>
-                <text x="1360" y="355" text-anchor="middle" fill="#00ff00" font-size="24">Large</text>
-                <text x="1360" y="460" text-anchor="middle" fill="#00ff00" font-size="18">EMERGENCE!</text>
+                <circle cx="1360" cy="350" r="90" fill="none" stroke="#00ff00" stroke-width="4"/>
+                <text x="1360" y="355" text-anchor="middle" fill="#00ff00" font-size="28">Large</text>
+                <text x="1360" y="470" text-anchor="middle" fill="#00ff00" font-size="22">EMERGENCE!</text>
                 
                 <!-- Sparkles -->
-                <text x="1260" y="300" fill="#ffff00" font-size="24">✨</text>
-                <text x="1460" y="300" fill="#ffff00" font-size="24">✨</text>
-                <text x="1260" y="400" fill="#ffff00" font-size="24">✨</text>
-                <text x="1460" y="400" fill="#ffff00" font-size="24">✨</text>
+                <text x="1240" y="280" fill="#ffff00" font-size="36">✨</text>
+                <text x="1480" y="280" fill="#ffff00" font-size="36">✨</text>
+                <text x="1240" y="420" fill="#ffff00" font-size="36">✨</text>
+                <text x="1480" y="420" fill="#ffff00" font-size="36">✨</text>
                 
                 <!-- Capabilities list -->
-                <rect x="460" y="550" width="1000" height="300" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="600" text-anchor="middle" fill="#00ff00" font-size="26" font-weight="bold">UNEXPECTED CAPABILITIES:</text>
+                <rect x="360" y="540" width="1200" height="320" fill="#001100" stroke="#00ff00" stroke-width="3"/>
+                <text x="960" y="590" text-anchor="middle" fill="#00ff00" font-size="30" font-weight="bold">UNEXPECTED CAPABILITIES:</text>
                 
-                <text x="560" y="650" fill="#00ffff" font-size="22" font-family="monospace">• Few-shot learning without fine-tuning</text>
-                <text x="560" y="690" fill="#00ffff" font-size="22" font-family="monospace">• Complex arithmetic and reasoning</text>
-                <text x="560" y="730" fill="#00ffff" font-size="22" font-family="monospace">• Code generation and debugging</text>
-                <text x="560" y="770" fill="#00ffff" font-size="22" font-family="monospace">• Multilingual translation</text>
-                <text x="560" y="810" fill="#00ffff" font-size="22" font-family="monospace">• Chain-of-thought reasoning</text>
+                <text x="460" y="650" fill="#00ffff" font-size="26" font-family="monospace">• Few-shot learning without fine-tuning</text>
+                <text x="460" y="695" fill="#00ffff" font-size="26" font-family="monospace">• Complex arithmetic and reasoning</text>
+                <text x="460" y="740" fill="#00ffff" font-size="26" font-family="monospace">• Code generation and debugging</text>
+                <text x="460" y="785" fill="#00ffff" font-size="26" font-family="monospace">• Multilingual translation</text>
+                <text x="460" y="830" fill="#00ffff" font-size="26" font-family="monospace">• Chain-of-thought reasoning</text>
                 
-                <text x="960" y="950" text-anchor="middle" fill="#ffff00" font-size="26" font-family="monospace">💡 Scale brings qualitative changes, not just quantitative improvements</text>
+                <text x="960" y="960" text-anchor="middle" fill="#ffff00" font-size="30" font-family="monospace">💡 Scale brings qualitative changes, not just quantitative improvements</text>
             </svg>
         </div>
 
@@ -719,50 +757,62 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">THE ROAD TO AGI</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">THE ROAD TO AGI</text>
+                
+                <!-- Path (drawn first so it goes behind circles) -->
+                <path d="M 360 500 L 1560 500" stroke="#00ff00" stroke-width="3" stroke-dasharray="10,5" opacity="0.5"/>
                 
                 <!-- Current position -->
-                <circle cx="360" cy="500" r="15" fill="#00ff00"/>
-                <text x="360" y="470" text-anchor="middle" fill="#00ff00" font-size="18">NOW</text>
-                
-                <!-- Path -->
-                <path d="M 380 500 L 1540 500" stroke="#00ff00" stroke-width="3" stroke-dasharray="10,5"/>
+                <circle cx="360" cy="500" r="20" fill="#00ff00"/>
+                <text x="360" y="460" text-anchor="middle" fill="#00ff00" font-size="22" font-weight="bold">NOW</text>
                 
                 <!-- Tool Usage -->
-                <circle cx="610" cy="500" r="40" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="610" y="495" text-anchor="middle" fill="#00ffff" font-size="16">TOOL</text>
-                <text x="610" y="510" text-anchor="middle" fill="#00ffff" font-size="16">USAGE</text>
-                <text x="610" y="430" text-anchor="middle" fill="#00ffff" font-size="18">🛠️</text>
-                <text x="610" y="570" text-anchor="middle" fill="#00aaaa" font-size="14">APIs, Search</text>
+                <g transform="translate(610, 500)">
+                    <circle cx="0" cy="0" r="60" fill="#000000" stroke="#00ffff" stroke-width="3"/>
+                    <text x="0" y="-70" text-anchor="middle" fill="#00ffff" font-size="40">🛠️</text>
+                    <text x="0" y="-5" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">TOOL</text>
+                    <text x="0" y="15" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">USAGE</text>
+                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18">APIs, Search</text>
+                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18">Calculators</text>
+                </g>
                 
                 <!-- Multimodal -->
-                <circle cx="860" cy="500" r="40" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="860" y="495" text-anchor="middle" fill="#00ffff" font-size="16">MULTI-</text>
-                <text x="860" y="510" text-anchor="middle" fill="#00ffff" font-size="16">MODAL</text>
-                <text x="860" y="430" text-anchor="middle" fill="#00ffff" font-size="18">🌍</text>
-                <text x="860" y="570" text-anchor="middle" fill="#00aaaa" font-size="14">Vision, Audio</text>
+                <g transform="translate(860, 500)">
+                    <circle cx="0" cy="0" r="60" fill="#000000" stroke="#00ffff" stroke-width="3"/>
+                    <text x="0" y="-70" text-anchor="middle" fill="#00ffff" font-size="40">🌍</text>
+                    <text x="0" y="-5" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">MULTI-</text>
+                    <text x="0" y="15" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">MODAL</text>
+                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18">Vision, Audio</text>
+                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18">Video</text>
+                </g>
                 
                 <!-- Memory -->
-                <circle cx="1110" cy="500" r="40" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="1110" y="495" text-anchor="middle" fill="#00ffff" font-size="16">MEMORY</text>
-                <text x="1110" y="510" text-anchor="middle" fill="#00ffff" font-size="16">LEARNING</text>
-                <text x="1110" y="430" text-anchor="middle" fill="#00ffff" font-size="18">💭</text>
-                <text x="1110" y="570" text-anchor="middle" fill="#00aaaa" font-size="14">Continual</text>
+                <g transform="translate(1110, 500)">
+                    <circle cx="0" cy="0" r="60" fill="#000000" stroke="#00ffff" stroke-width="3"/>
+                    <text x="0" y="-70" text-anchor="middle" fill="#00ffff" font-size="40">💭</text>
+                    <text x="0" y="-5" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">MEMORY &amp;</text>
+                    <text x="0" y="15" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">LEARNING</text>
+                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18">Continual</text>
+                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18">Updates</text>
+                </g>
                 
                 <!-- Aligned Values -->
-                <circle cx="1360" cy="500" r="40" fill="none" stroke="#ffff00" stroke-width="2"/>
-                <text x="1360" y="495" text-anchor="middle" fill="#ffff00" font-size="16">ALIGNED</text>
-                <text x="1360" y="510" text-anchor="middle" fill="#ffff00" font-size="16">VALUES</text>
-                <text x="1360" y="430" text-anchor="middle" fill="#ffff00" font-size="18">❤️</text>
-                <text x="1360" y="570" text-anchor="middle" fill="#aaaa00" font-size="14">Human Benefits</text>
+                <g transform="translate(1360, 500)">
+                    <circle cx="0" cy="0" r="60" fill="#000000" stroke="#ffff00" stroke-width="3"/>
+                    <text x="0" y="-70" text-anchor="middle" fill="#ffff00" font-size="40">❤️</text>
+                    <text x="0" y="-5" text-anchor="middle" fill="#ffff00" font-size="20" font-weight="bold">ALIGNED</text>
+                    <text x="0" y="15" text-anchor="middle" fill="#ffff00" font-size="20" font-weight="bold">VALUES</text>
+                    <text x="0" y="95" text-anchor="middle" fill="#aaaa00" font-size="18">Human</text>
+                    <text x="0" y="115" text-anchor="middle" fill="#aaaa00" font-size="18">Benefits</text>
+                </g>
                 
                 <!-- AGI -->
-                <circle cx="1560" cy="500" r="20" fill="#00ff00"/>
-                <text x="1560" y="465" text-anchor="middle" fill="#00ff00" font-size="20" font-weight="bold">AGI</text>
+                <circle cx="1560" cy="500" r="25" fill="#00ff00"/>
+                <text x="1560" y="455" text-anchor="middle" fill="#00ff00" font-size="24" font-weight="bold">AGI</text>
                 
                 <!-- Bottom note -->
-                <rect x="460" y="850" width="1000" height="60" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="890" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">Each milestone builds toward human-level general intelligence</text>
+                <rect x="360" y="850" width="1200" height="80" fill="#001100" stroke="#00ff00" stroke-width="2"/>
+                <text x="960" y="900" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">Each milestone builds toward human-level general intelligence</text>
             </svg>
         </div>
 
