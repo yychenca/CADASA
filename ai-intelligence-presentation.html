@@ -42,7 +42,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: glitchIn 0.3s ease-out;
         }
 
         .slide svg {
@@ -65,6 +64,48 @@
                 opacity: 1;
                 transform: scale(1) translateX(0);
             }
+        }
+
+        @keyframes morphIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95) rotateX(10deg);
+                filter: blur(5px);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.02) rotateX(5deg);
+                filter: blur(2px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateX(0deg);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes morphOut {
+            0% {
+                opacity: 1;
+                transform: scale(1) rotateX(0deg);
+                filter: blur(0px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.05) rotateX(-10deg);
+                filter: blur(5px);
+            }
+        }
+
+        .slide.morphing-out {
+            animation: morphOut 0.4s ease-out forwards;
+        }
+
+        .slide.morphing-in {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            animation: morphIn 0.4s ease-out forwards;
         }
 
         .navigation {
@@ -107,6 +148,20 @@
             z-index: 1000;
         }
     </style>
+    <style>
+        /* Matrix rain animation for SVG elements */
+        @keyframes matrixFall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(1200px);
+                opacity: 0;
+            }
+        }
+    </style>
+    </style>
 </head>
 <body>
     <div class="presentation-container">
@@ -119,13 +174,12 @@
             <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
                 <rect width="1920" height="1080" fill="#000000"/>
                 
-                <!-- Grid pattern -->
+                <!-- Grid pattern and animation -->
                 <defs>
                     <pattern id="grid1" width="40" height="40" patternUnits="userSpaceOnUse">
                         <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#003300" stroke-width="1"/>
                     </pattern>
                     
-                    <!-- Matrix rain animation -->
                     <style>
                         @keyframes matrixFall {
                             from {
@@ -420,8 +474,8 @@
                 
                 <!-- Masked example -->
                 <rect x="260" y="350" width="400" height="80" fill="#001144" stroke="#0099ff" stroke-width="2"/>
-                <text x="460" y="390" text-anchor="middle" fill="#ffffff" font-size="24" font-family="monospace">The cat sat on the [MASK]</text>
-                <text x="460" y="420" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">→ mat, floor, chair...</text>
+                <text x="460" y="390" text-anchor="middle" fill="#ffffff" font-size="24" font-family="monospace">The [MASK] sat on the mat</text>
+                <text x="460" y="420" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">→ cat, dog, bird...</text>
                 
                 <!-- Bidirectional arrows -->
                 <path d="M 360 490 L 420 490" stroke="#0099ff" stroke-width="3"/>
@@ -907,14 +961,68 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <!-- Matrix rain effect background -->
-                <text x="200" y="100" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01010100 01001000</text>
-                <text x="400" y="200" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01000001 01001110</text>
-                <text x="600" y="150" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01001011 00100000</text>
-                <text x="800" y="250" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01011001 01001111</text>
-                <text x="1000" y="180" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01010101</text>
-                <text x="1200" y="220" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">00100001</text>
-                <text x="1400" y="160" fill="#00ff00" font-family="monospace" font-size="20" opacity="0.2">01000001 01001001</text>
+                <!-- Animation style for matrix rain -->
+                <defs>
+                    <style>
+                        @keyframes matrixFall2 {
+                            from {
+                                transform: translateY(-100px);
+                                opacity: 1;
+                            }
+                            to {
+                                transform: translateY(1200px);
+                                opacity: 0;
+                            }
+                        }
+                        .matrix-char {
+                            animation: matrixFall2 linear infinite;
+                        }
+                    </style>
+                </defs>
+                
+                <!-- Animated Matrix rain effect background -->
+                <g opacity="0.25">
+                    <text x="200" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 0s;">01010100</text>
+                    <text x="350" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 0.5s;">01001000</text>
+                    <text x="500" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 1s;">01000001</text>
+                    <text x="650" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 1.5s;">01001110</text>
+                    <text x="800" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 2s;">01001011</text>
+                    <text x="950" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 0.3s;">00100000</text>
+                    <text x="1100" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 2.5s;">01011001</text>
+                    <text x="1250" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.8s;">01001111</text>
+                    <text x="1400" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 1.3s;">01010101</text>
+                    <text x="1550" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 1.8s;">00100001</text>
+                    <text x="1700" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.3s;">01000001</text>
+                    <text x="1850" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 0.6s;">01001001</text>
+                    
+                    <!-- Second wave with different timing -->
+                    <text x="150" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 3s;">10101010</text>
+                    <text x="300" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 3.5s;">11110000</text>
+                    <text x="450" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4s;">00110011</text>
+                    <text x="600" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.2s;">10110110</text>
+                    <text x="750" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 4.5s;">11001100</text>
+                    <text x="900" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 3.8s;">01110111</text>
+                    <text x="1050" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4.2s;">10001000</text>
+                    <text x="1200" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.6s;">11111111</text>
+                    <text x="1350" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 4.8s;">00001111</text>
+                    <text x="1500" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.3s;">10101111</text>
+                    <text x="1650" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4.6s;">01010101</text>
+                    <text x="1800" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 3.9s;">11001010</text>
+                    
+                    <!-- Third wave for density -->
+                    <text x="100" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.5s;">01101101</text>
+                    <text x="250" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6s;">10010010</text>
+                    <text x="400" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.2s;">11100111</text>
+                    <text x="550" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.5s;">00011000</text>
+                    <text x="700" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.8s;">10111101</text>
+                    <text x="850" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6.3s;">01001010</text>
+                    <text x="1000" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.6s;">11011011</text>
+                    <text x="1150" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.8s;">00100010</text>
+                    <text x="1300" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.3s;">10100101</text>
+                    <text x="1450" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6.1s;">01111110</text>
+                    <text x="1600" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.9s;">11000011</text>
+                    <text x="1750" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.4s;">00111100</text>
+                </g>
                 
                 <!-- Thank you message -->
                 <text x="960" y="540" text-anchor="middle" fill="#00ff00" font-size="100" font-family="monospace" font-weight="bold">THANK YOU</text>
@@ -933,26 +1041,46 @@
         
         document.getElementById('total-slides').textContent = totalSlides;
 
-        function showSlide(n) {
+        function showSlide(n, direction = 'next') {
             const slides = document.querySelectorAll('.slide');
+            const previousSlideIndex = currentSlide - 1;
             
             if (n > totalSlides) currentSlide = 1;
             if (n < 1) currentSlide = totalSlides;
             
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[currentSlide - 1].classList.add('active');
+            // Apply morph-out animation to current slide
+            if (slides[previousSlideIndex]) {
+                slides[previousSlideIndex].classList.remove('active', 'morphing-in');
+                slides[previousSlideIndex].classList.add('morphing-out');
+                
+                // Remove the slide after animation completes
+                setTimeout(() => {
+                    slides[previousSlideIndex].classList.remove('morphing-out');
+                }, 400);
+            }
+            
+            // Apply morph-in animation to new slide
+            setTimeout(() => {
+                slides[currentSlide - 1].classList.remove('morphing-out');
+                slides[currentSlide - 1].classList.add('active', 'morphing-in');
+                
+                // Clean up animation class after completion
+                setTimeout(() => {
+                    slides[currentSlide - 1].classList.remove('morphing-in');
+                }, 400);
+            }, 200); // Slight delay for smoother transition
             
             document.getElementById('current-slide').textContent = currentSlide;
         }
 
         function nextSlide() {
             currentSlide++;
-            showSlide(currentSlide);
+            showSlide(currentSlide, 'next');
         }
 
         function previousSlide() {
             currentSlide--;
-            showSlide(currentSlide);
+            showSlide(currentSlide, 'prev');
         }
 
         // Keyboard navigation
@@ -964,8 +1092,10 @@
             }
         });
 
-        // Initialize
-        showSlide(currentSlide);
+        // Initialize - show first slide without animation
+        const slides = document.querySelectorAll('.slide');
+        slides[0].classList.add('active');
+        document.getElementById('current-slide').textContent = currentSlide;
     </script>
 </body>
 </html>
