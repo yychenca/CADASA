@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How Machines Gain Intelligence?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +15,7 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'VT323', monospace;
             background: #000;
             overflow: hidden;
             color: #00ff00;
@@ -30,18 +33,24 @@
         }
 
         .slide {
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             height: 100%;
             position: absolute;
             top: 0;
             left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
         }
 
         .slide.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            opacity: 1;
+            visibility: visible;
+            z-index: 10;
         }
 
         .slide svg {
@@ -49,63 +58,6 @@
             height: 95vh;
             max-width: 1920px;
             max-height: 1080px;
-        }
-
-        @keyframes glitchIn {
-            0% {
-                opacity: 0;
-                transform: scale(1.01) translateX(2px);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(1) translateX(-1px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateX(0);
-            }
-        }
-
-        @keyframes morphIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.95) rotateX(10deg);
-                filter: blur(5px);
-            }
-            50% {
-                opacity: 0.7;
-                transform: scale(1.02) rotateX(5deg);
-                filter: blur(2px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) rotateX(0deg);
-                filter: blur(0px);
-            }
-        }
-
-        @keyframes morphOut {
-            0% {
-                opacity: 1;
-                transform: scale(1) rotateX(0deg);
-                filter: blur(0px);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(1.05) rotateX(-10deg);
-                filter: blur(5px);
-            }
-        }
-
-        .slide.morphing-out {
-            animation: morphOut 0.4s ease-out forwards;
-        }
-
-        .slide.morphing-in {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            animation: morphIn 0.4s ease-out forwards;
         }
 
         .navigation {
@@ -120,13 +72,13 @@
 
         button {
             padding: 12px 24px;
-            font-size: 1em;
+            font-size: 1.2em; /* Increased font size slightly for pixel font */
             background: #000;
             border: 1px solid #00ff00;
             color: #00ff00;
             cursor: pointer;
             transition: all 0.3s;
-            font-family: 'Courier New', monospace;
+            font-family: 'VT323', monospace;
             text-transform: uppercase;
         }
 
@@ -144,8 +96,9 @@
             padding: 10px 20px;
             border: 1px solid #00ff00;
             color: #00ff00;
-            font-family: 'Courier New', monospace;
+            font-family: 'VT323', monospace;
             z-index: 1000;
+            font-size: 1.2em;
         }
     </style>
     <style>
@@ -160,7 +113,6 @@
                 opacity: 0;
             }
         }
-    </style>
     </style>
 </head>
 <body>
@@ -200,35 +152,35 @@
                 
                 <!-- Animated Matrix rain effect -->
                 <g opacity="0.3">
-                    <text x="100" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0s;">01001000</text>
-                    <text x="250" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 1s;">01001111</text>
-                    <text x="400" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 7s; animation-delay: 0.5s;">01010111</text>
-                    <text x="550" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 2s;">01001101</text>
-                    <text x="700" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 1.5s;">01000001</text>
-                    <text x="850" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 0.8s;">01000011</text>
-                    <text x="1000" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.5s;">01001000</text>
-                    <text x="1150" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.3s;">01001001</text>
-                    <text x="1300" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 1.8s;">01001110</text>
-                    <text x="1450" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 7s; animation-delay: 1.2s;">01000101</text>
-                    <text x="1600" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.2s;">01010011</text>
-                    <text x="1750" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.7s;">01000111</text>
+                    <text x="100" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0s;">01001000</text>
+                    <text x="250" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 1s;">01001111</text>
+                    <text x="400" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 7s; animation-delay: 0.5s;">01010111</text>
+                    <text x="550" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 2s;">01001101</text>
+                    <text x="700" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 1.5s;">01000001</text>
+                    <text x="850" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 0.8s;">01000011</text>
+                    <text x="1000" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.5s;">01001000</text>
+                    <text x="1150" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.3s;">01001001</text>
+                    <text x="1300" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 1.8s;">01001110</text>
+                    <text x="1450" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 7s; animation-delay: 1.2s;">01000101</text>
+                    <text x="1600" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.2s;">01010011</text>
+                    <text x="1750" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.7s;">01000111</text>
                     
                     <!-- Second wave -->
-                    <text x="180" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 3s;">01000001</text>
-                    <text x="330" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.5s;">01001001</text>
-                    <text x="480" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4s;">01001110</text>
-                    <text x="630" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.2s;">10101010</text>
-                    <text x="780" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 4.5s;">11001100</text>
-                    <text x="930" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.8s;">10110110</text>
-                    <text x="1080" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4.2s;">01110111</text>
-                    <text x="1230" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 3.6s;">10001000</text>
-                    <text x="1380" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4.8s;">11110000</text>
-                    <text x="1530" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.3s;">00110011</text>
-                    <text x="1680" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 4.6s;">10101111</text>
+                    <text x="180" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 3s;">01000001</text>
+                    <text x="330" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.5s;">01001001</text>
+                    <text x="480" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4s;">01001110</text>
+                    <text x="630" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.2s;">10101010</text>
+                    <text x="780" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 4.5s;">11001100</text>
+                    <text x="930" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.8s;">10110110</text>
+                    <text x="1080" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4.2s;">01110111</text>
+                    <text x="1230" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 3.6s;">10001000</text>
+                    <text x="1380" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4.8s;">11110000</text>
+                    <text x="1530" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.3s;">00110011</text>
+                    <text x="1680" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 4.6s;">10101111</text>
                 </g>
                 
                 <!-- Main title -->
-                <text x="960" y="400" text-anchor="middle" fill="#00ff00" font-size="80" font-family="monospace" font-weight="bold">HOW MACHINES GAIN INTELLIGENCE?</text>
+                <text x="960" y="400" text-anchor="middle" fill="#00ff00" font-size="80" font-family="VT323, monospace" font-weight="bold">HOW MACHINES GAIN INTELLIGENCE?</text>
                 
                 <!-- Robot icon -->
                 <g transform="translate(960, 540)">
@@ -239,10 +191,10 @@
                 </g>
                 
                 <!-- Subtitle -->
-                <text x="960" y="680" text-anchor="middle" fill="#00ff00" font-size="36" font-family="monospace" opacity="0.9">From Pattern Recognition to Reasoning</text>
+                <text x="960" y="680" text-anchor="middle" fill="#00ff00" font-size="36" font-family="VT323, monospace" opacity="0.9">From Pattern Recognition to Reasoning</text>
                 
                 <!-- Author info -->
-                <text x="960" y="920" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">Chris Chen, Sr. Applied Scientist, Microsoft</text>
+                <text x="960" y="920" text-anchor="middle" fill="#00ff00" font-size="28" font-family="VT323, monospace">Chris Chen, Sr. Applied Scientist, Microsoft</text>
             </svg>
         </div>
 
@@ -252,14 +204,14 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">THE QUEST FOR MACHINE INTELLIGENCE</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="VT323, monospace" font-weight="bold">THE QUEST FOR MACHINE INTELLIGENCE</text>
                 
                 <!-- AI Evolution Diagram -->
                 <!-- Narrow AI -->
                 <rect x="260" y="320" width="350" height="140" fill="none" stroke="#00ff00" stroke-width="3"/>
-                <text x="435" y="365" text-anchor="middle" fill="#00ff00" font-size="32" font-family="monospace" font-weight="bold">NARROW AI</text>
-                <text x="435" y="400" text-anchor="middle" fill="#00aa00" font-size="22" font-family="monospace">Specialized Tasks</text>
-                <text x="435" y="430" text-anchor="middle" fill="#00aa00" font-size="20" font-family="monospace">Chess, Image Recognition</text>
+                <text x="435" y="365" text-anchor="middle" fill="#00ff00" font-size="32" font-family="VT323, monospace" font-weight="bold">NARROW AI</text>
+                <text x="435" y="400" text-anchor="middle" fill="#00aa00" font-size="22" font-family="VT323, monospace">Specialized Tasks</text>
+                <text x="435" y="430" text-anchor="middle" fill="#00aa00" font-size="20" font-family="VT323, monospace">Chess, Image Recognition</text>
                 
                 <!-- Arrow -->
                 <path d="M 610 390 L 710 390" stroke="#00ff00" stroke-width="3" fill="none"/>
@@ -267,9 +219,9 @@
                 
                 <!-- General AI -->
                 <rect x="785" y="320" width="350" height="140" fill="none" stroke="#00ffff" stroke-width="3"/>
-                <text x="960" y="365" text-anchor="middle" fill="#00ffff" font-size="32" font-family="monospace" font-weight="bold">GENERAL AI (AGI)</text>
-                <text x="960" y="400" text-anchor="middle" fill="#00aaaa" font-size="22" font-family="monospace">Human-like Versatility</text>
-                <text x="960" y="430" text-anchor="middle" fill="#00aaaa" font-size="20" font-family="monospace">Cross-domain Reasoning</text>
+                <text x="960" y="365" text-anchor="middle" fill="#00ffff" font-size="32" font-family="VT323, monospace" font-weight="bold">GENERAL AI (AGI)</text>
+                <text x="960" y="400" text-anchor="middle" fill="#00aaaa" font-size="22" font-family="VT323, monospace">Human-like Versatility</text>
+                <text x="960" y="430" text-anchor="middle" fill="#00aaaa" font-size="20" font-family="VT323, monospace">Cross-domain Reasoning</text>
                 
                 <!-- Arrow -->
                 <path d="M 1135 390 L 1235 390" stroke="#00ff00" stroke-width="3" fill="none"/>
@@ -277,14 +229,14 @@
                 
                 <!-- Super AI -->
                 <rect x="1310" y="320" width="350" height="140" fill="none" stroke="#ffff00" stroke-width="3"/>
-                <text x="1485" y="365" text-anchor="middle" fill="#ffff00" font-size="32" font-family="monospace" font-weight="bold">SUPER AI</text>
-                <text x="1485" y="400" text-anchor="middle" fill="#aaaa00" font-size="22" font-family="monospace">Beyond Human</text>
-                <text x="1485" y="430" text-anchor="middle" fill="#aaaa00" font-size="20" font-family="monospace">Transcendent Intelligence</text>
+                <text x="1485" y="365" text-anchor="middle" fill="#ffff00" font-size="32" font-family="VT323, monospace" font-weight="bold">SUPER AI</text>
+                <text x="1485" y="400" text-anchor="middle" fill="#aaaa00" font-size="22" font-family="VT323, monospace">Beyond Human</text>
+                <text x="1485" y="430" text-anchor="middle" fill="#aaaa00" font-size="20" font-family="VT323, monospace">Transcendent Intelligence</text>
                 
                 <!-- Key Insight -->
                 <rect x="460" y="680" width="1000" height="120" fill="#001100" stroke="#00ff00" stroke-width="3"/>
-                <text x="960" y="730" text-anchor="middle" fill="#00ff00" font-size="30" font-family="monospace" font-weight="bold">KEY INSIGHT:</text>
-                <text x="960" y="770" text-anchor="middle" fill="#00ffff" font-size="32" font-family="monospace">The path to AGI is through LANGUAGE</text>
+                <text x="960" y="730" text-anchor="middle" fill="#00ff00" font-size="30" font-family="VT323, monospace" font-weight="bold">KEY INSIGHT:</text>
+                <text x="960" y="770" text-anchor="middle" fill="#00ffff" font-size="32" font-family="VT323, monospace">The path to AGI is through LANGUAGE</text>
             </svg>
         </div>
 
@@ -294,42 +246,42 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">WHY LANGUAGE?</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="VT323, monospace" font-weight="bold">WHY LANGUAGE?</text>
                 
                 <!-- Brain-Language Network -->
                 <!-- Central circle -->
                 <circle cx="960" cy="400" r="100" fill="none" stroke="#00ff00" stroke-width="3"/>
-                <text x="960" y="410" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace" font-weight="bold">LANGUAGE</text>
+                <text x="960" y="410" text-anchor="middle" fill="#00ff00" font-size="28" font-family="VT323, monospace" font-weight="bold">LANGUAGE</text>
                 
                 <!-- Knowledge node -->
                 <circle cx="660" cy="250" r="60" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="660" y="258" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">KNOWLEDGE</text>
+                <text x="660" y="258" text-anchor="middle" fill="#00ffff" font-size="20" font-family="VT323, monospace">KNOWLEDGE</text>
                 <line x1="710" y1="285" x2="875" y2="355" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
                 
                 <!-- Reasoning node -->
                 <circle cx="1260" cy="250" r="60" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="1260" y="258" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">REASONING</text>
+                <text x="1260" y="258" text-anchor="middle" fill="#00ffff" font-size="20" font-family="VT323, monospace">REASONING</text>
                 <line x1="1210" y1="285" x2="1045" y2="355" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
                 
                 <!-- Culture node -->
                 <circle cx="660" cy="550" r="60" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="660" y="558" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">CULTURE</text>
+                <text x="660" y="558" text-anchor="middle" fill="#00ffff" font-size="20" font-family="VT323, monospace">CULTURE</text>
                 <line x1="710" y1="515" x2="875" y2="445" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
                 
                 <!-- Logic node -->
                 <circle cx="1260" cy="550" r="60" fill="none" stroke="#00ffff" stroke-width="2"/>
-                <text x="1260" y="558" text-anchor="middle" fill="#00ffff" font-size="20" font-family="monospace">LOGIC</text>
+                <text x="1260" y="558" text-anchor="middle" fill="#00ffff" font-size="20" font-family="VT323, monospace">LOGIC</text>
                 <line x1="1210" y1="515" x2="1045" y2="445" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
                 
                 <!-- Key Points -->
-                <text x="180" y="710" fill="#00ff00" font-size="28" font-family="monospace">• Compositional: Infinite expressions from finite elements</text>
-                <text x="180" y="760" fill="#00ff00" font-size="28" font-family="monospace">• Contains implicit logic and world models</text>
-                <text x="180" y="810" fill="#00ff00" font-size="28" font-family="monospace">• Bridges perception, reasoning, and action</text>
-                <text x="180" y="860" fill="#00ff00" font-size="28" font-family="monospace">• Encodes human knowledge and culture</text>
+                <text x="180" y="710" fill="#00ff00" font-size="28" font-family="VT323, monospace">• Compositional: Infinite expressions from finite elements</text>
+                <text x="180" y="760" fill="#00ff00" font-size="28" font-family="VT323, monospace">• Contains implicit logic and world models</text>
+                <text x="180" y="810" fill="#00ff00" font-size="28" font-family="VT323, monospace">• Bridges perception, reasoning, and action</text>
+                <text x="180" y="860" fill="#00ff00" font-size="28" font-family="VT323, monospace">• Encodes human knowledge and culture</text>
                 
                 <!-- Quote -->
                 <rect x="360" y="920" width="1200" height="90" fill="#001100" stroke="#00ff00" stroke-width="2" stroke-dasharray="5,5"/>
-                <text x="960" y="975" text-anchor="middle" fill="#00ffff" font-size="26" font-family="monospace" font-style="italic">"To understand language is to understand the world"</text>
+                <text x="960" y="975" text-anchor="middle" fill="#00ffff" font-size="26" font-family="VT323, monospace" font-style="italic">"To understand language is to understand the world"</text>
             </svg>
         </div>
 
@@ -339,36 +291,36 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">LANGUAGE MODELS ARE BAYESIANS</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="VT323, monospace" font-weight="bold">LANGUAGE MODELS ARE BAYESIANS</text>
                 
                 <!-- Example sentence -->
                 <rect x="210" y="190" width="1500" height="150" fill="#001100" stroke="#00ff00" stroke-width="3"/>
-                <text x="960" y="245" text-anchor="middle" fill="#00ffff" font-size="36" font-family="monospace">"A girl saw a boy with a telescope"</text>
-                <text x="960" y="300" text-anchor="middle" fill="#00aa00" font-size="24" font-family="monospace">Two possible interpretations - but humans choose one effortlessly</text>
+                <text x="960" y="245" text-anchor="middle" fill="#00ffff" font-size="36" font-family="VT323, monospace">"A girl saw a boy with a telescope"</text>
+                <text x="960" y="300" text-anchor="middle" fill="#00aa00" font-size="24" font-family="VT323, monospace">Two possible interpretations - but humans choose one effortlessly</text>
                 
                 <!-- Interpretation 1 -->
-                <text x="600" y="420" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">INTERPRETATION 1:</text>
+                <text x="600" y="420" text-anchor="middle" fill="#00ff00" font-size="28" font-family="VT323, monospace">INTERPRETATION 1:</text>
                 <!-- Girl figure -->
                 <circle cx="500" cy="480" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
                 <line x1="500" y1="500" x2="500" y2="550" stroke="#00ff00" stroke-width="3"/>
-                <text x="500" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">GIRL</text>
+                <text x="500" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">GIRL</text>
                 <!-- Telescope -->
                 <rect x="525" y="505" width="50" height="12" fill="none" stroke="#00ffff" stroke-width="3"/>
-                <text x="550" y="540" text-anchor="middle" fill="#00ffff" font-size="18" font-family="monospace">telescope</text>
+                <text x="550" y="540" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">telescope</text>
                 <!-- Arrow -->
                 <path d="M 575 510 L 635 510" stroke="#ffff00" stroke-width="3" stroke-dasharray="5,5"/>
                 <polygon points="635,505 645,510 635,515" fill="#ffff00"/>
                 <!-- Boy -->
                 <circle cx="700" cy="480" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
                 <line x1="700" y1="500" x2="700" y2="550" stroke="#00ff00" stroke-width="3"/>
-                <text x="700" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">BOY</text>
+                <text x="700" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">BOY</text>
                 
                 <!-- Interpretation 2 -->
-                <text x="1320" y="420" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">INTERPRETATION 2:</text>
+                <text x="1320" y="420" text-anchor="middle" fill="#00ff00" font-size="28" font-family="VT323, monospace">INTERPRETATION 2:</text>
                 <!-- Girl -->
                 <circle cx="1220" cy="480" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
                 <line x1="1220" y1="500" x2="1220" y2="550" stroke="#00ff00" stroke-width="3"/>
-                <text x="1220" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">GIRL</text>
+                <text x="1220" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">GIRL</text>
                 <!-- Arrow seeing -->
                 <path d="M 1255 495 L 1355 495" stroke="#ffff00" stroke-width="3" stroke-dasharray="5,5"/>
                 <polygon points="1355,490 1365,495 1355,500" fill="#ffff00"/>
@@ -376,15 +328,15 @@
                 <circle cx="1420" cy="480" r="20" fill="none" stroke="#00ff00" stroke-width="3"/>
                 <line x1="1420" y1="500" x2="1420" y2="550" stroke="#00ff00" stroke-width="3"/>
                 <rect x="1445" y="505" width="50" height="12" fill="none" stroke="#00ffff" stroke-width="3"/>
-                <text x="1420" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">BOY</text>
-                <text x="1470" y="540" text-anchor="middle" fill="#00ffff" font-size="18" font-family="monospace">telescope</text>
+                <text x="1420" y="580" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">BOY</text>
+                <text x="1470" y="540" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">telescope</text>
                 
                 <!-- Bayes Formula -->
                 <rect x="360" y="720" width="1200" height="110" fill="#001100" stroke="#00ff00" stroke-width="3"/>
-                <text x="960" y="765" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">P(interpretation | context) = P(context | interpretation) × P(interpretation) / P(context)</text>
-                <text x="960" y="805" text-anchor="middle" fill="#00ffff" font-size="24" font-family="monospace">We naturally compute probabilities to resolve ambiguity</text>
+                <text x="960" y="765" text-anchor="middle" fill="#00ff00" font-size="28" font-family="VT323, monospace">P(interpretation | context) = P(context | interpretation) × P(interpretation) / P(context)</text>
+                <text x="960" y="805" text-anchor="middle" fill="#00ffff" font-size="24" font-family="VT323, monospace">We naturally compute probabilities to resolve ambiguity</text>
                 
-                <text x="960" y="960" text-anchor="middle" fill="#00ff00" font-size="26" font-family="monospace">Language models learn these probability distributions from data</text>
+                <text x="960" y="960" text-anchor="middle" fill="#00ff00" font-size="26" font-family="VT323, monospace">Language models learn these probability distributions from data</text>
             </svg>
         </div>
 
@@ -394,10 +346,10 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">THE EVOLUTION OF AI ARCHITECTURES</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">THE EVOLUTION OF AI ARCHITECTURES</text>
                 
                 <!-- RNN Visualization -->
-                <text x="480" y="280" text-anchor="middle" fill="#00ff00" font-size="32" font-family="monospace">RNN: Sequential Processing</text>
+                <text x="480" y="280" text-anchor="middle" fill="#00ff00" font-size="32" font-family="VT323, monospace">RNN: Sequential Processing</text>
                 <!-- RNN cells -->
                 <rect x="280" y="330" width="60" height="60" fill="none" stroke="#00ff00" stroke-width="2"/>
                 <text x="310" y="365" text-anchor="middle" fill="#00ff00" font-size="16">h₀</text>
@@ -417,14 +369,14 @@
                 <text x="660" y="365" fill="#00ff00" font-size="24">...</text>
                 
                 <!-- Input words -->
-                <text x="310" y="430" text-anchor="middle" fill="#00ffff" font-size="18">word₁</text>
-                <text x="430" y="430" text-anchor="middle" fill="#00ffff" font-size="18">word₂</text>
-                <text x="550" y="430" text-anchor="middle" fill="#00ffff" font-size="18">word₃</text>
+                <text x="310" y="430" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">word₁</text>
+                <text x="430" y="430" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">word₂</text>
+                <text x="550" y="430" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">word₃</text>
                 
-                <text x="480" y="480" text-anchor="middle" fill="#ff6666" font-size="20">⚠ Limited context window</text>
+                <text x="480" y="480" text-anchor="middle" fill="#ff6666" font-size="20" font-family="VT323, monospace">⚠ Limited context window</text>
                 
                 <!-- Transformer Visualization -->
-                <text x="1440" y="280" text-anchor="middle" fill="#00ff00" font-size="32" font-family="monospace">Transformer: Attention is All You Need</text>
+                <text x="1440" y="280" text-anchor="middle" fill="#00ff00" font-size="32" font-family="VT323, monospace">Transformer: Attention is All You Need</text>
                 
                 <!-- All tokens -->
                 <rect x="1240" y="330" width="60" height="60" fill="none" stroke="#00ffff" stroke-width="2"/>
@@ -445,17 +397,17 @@
                 <line x1="1510" y1="390" x2="1390" y2="390" stroke="#00ff00" stroke-width="1" opacity="0.5"/>
                 
                 <!-- Input words -->
-                <text x="1270" y="430" text-anchor="middle" fill="#00ffff" font-size="18">word₁</text>
-                <text x="1390" y="430" text-anchor="middle" fill="#00ffff" font-size="18">word₂</text>
-                <text x="1510" y="430" text-anchor="middle" fill="#00ffff" font-size="18">word₃</text>
+                <text x="1270" y="430" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">word₁</text>
+                <text x="1390" y="430" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">word₂</text>
+                <text x="1510" y="430" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">word₃</text>
                 
-                <text x="1440" y="480" text-anchor="middle" fill="#00ff00" font-size="20">✓ Global context attention</text>
+                <text x="1440" y="480" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">✓ Global context attention</text>
                 
                 <!-- Comparison -->
                 <rect x="460" y="620" width="1000" height="150" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="670" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">KEY BREAKTHROUGH:</text>
-                <text x="960" y="710" text-anchor="middle" fill="#00ffff" font-size="22" font-family="monospace">• RNN: Process word → word → word (sequential, slow)</text>
-                <text x="960" y="745" text-anchor="middle" fill="#00ffff" font-size="22" font-family="monospace">• Transformer: All words attend to all words (parallel, fast)</text>
+                <text x="960" y="670" text-anchor="middle" fill="#00ff00" font-size="24" font-family="VT323, monospace">KEY BREAKTHROUGH:</text>
+                <text x="960" y="710" text-anchor="middle" fill="#00ffff" font-size="22" font-family="VT323, monospace">• RNN: Process word → word → word (sequential, slow)</text>
+                <text x="960" y="745" text-anchor="middle" fill="#00ffff" font-size="22" font-family="VT323, monospace">• Transformer: All words attend to all words (parallel, fast)</text>
             </svg>
         </div>
 
@@ -465,17 +417,17 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">TWO SIDES OF THE SAME COIN: BERT &amp; GPT</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="VT323, monospace" font-weight="bold">TWO SIDES OF THE SAME COIN: BERT &amp; GPT</text>
                 
                 <!-- BERT Side -->
                 <rect x="240" y="200" width="440" height="520" fill="#000033" stroke="#0099ff" stroke-width="3"/>
-                <text x="460" y="250" text-anchor="middle" fill="#0099ff" font-size="42" font-family="monospace" font-weight="bold">BERT</text>
-                <text x="460" y="300" text-anchor="middle" fill="#00ffff" font-size="28" font-family="monospace">Bidirectional Understanding</text>
+                <text x="460" y="250" text-anchor="middle" fill="#0099ff" font-size="42" font-family="VT323, monospace" font-weight="bold">BERT</text>
+                <text x="460" y="300" text-anchor="middle" fill="#00ffff" font-size="28" font-family="VT323, monospace">Bidirectional Understanding</text>
                 
                 <!-- Masked example -->
                 <rect x="260" y="350" width="400" height="80" fill="#001144" stroke="#0099ff" stroke-width="2"/>
-                <text x="460" y="390" text-anchor="middle" fill="#ffffff" font-size="24" font-family="monospace">The [MASK] sat on the mat</text>
-                <text x="460" y="420" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">→ cat, dog, bird...</text>
+                <text x="460" y="390" text-anchor="middle" fill="#ffffff" font-size="24" font-family="VT323, monospace">The [MASK] sat on the mat</text>
+                <text x="460" y="420" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">→ cat, dog, bird...</text>
                 
                 <!-- Bidirectional arrows -->
                 <path d="M 360 490 L 420 490" stroke="#0099ff" stroke-width="3"/>
@@ -485,19 +437,19 @@
                 <text x="460" y="495" text-anchor="middle" fill="#0099ff" font-size="18">←CONTEXT→</text>
                 
                 <!-- Features -->
-                <text x="460" y="560" text-anchor="middle" fill="#0099ff" font-size="24" font-family="monospace">✓ Classification tasks</text>
-                <text x="460" y="595" text-anchor="middle" fill="#0099ff" font-size="24" font-family="monospace">✓ Full context awareness</text>
-                <text x="460" y="630" text-anchor="middle" fill="#0099ff" font-size="24" font-family="monospace">✓ Understanding focus</text>
+                <text x="460" y="560" text-anchor="middle" fill="#0099ff" font-size="24" font-family="VT323, monospace">✓ Classification tasks</text>
+                <text x="460" y="595" text-anchor="middle" fill="#0099ff" font-size="24" font-family="VT323, monospace">✓ Full context awareness</text>
+                <text x="460" y="630" text-anchor="middle" fill="#0099ff" font-size="24" font-family="VT323, monospace">✓ Understanding focus</text>
                 
                 <!-- GPT Side -->
                 <rect x="1240" y="200" width="440" height="520" fill="#003300" stroke="#00ff00" stroke-width="3"/>
-                <text x="1460" y="250" text-anchor="middle" fill="#00ff00" font-size="42" font-family="monospace" font-weight="bold">GPT</text>
-                <text x="1460" y="300" text-anchor="middle" fill="#00ffff" font-size="28" font-family="monospace">Autoregressive Generation</text>
+                <text x="1460" y="250" text-anchor="middle" fill="#00ff00" font-size="42" font-family="VT323, monospace" font-weight="bold">GPT</text>
+                <text x="1460" y="300" text-anchor="middle" fill="#00ffff" font-size="28" font-family="VT323, monospace">Autoregressive Generation</text>
                 
                 <!-- Generation example -->
                 <rect x="1260" y="350" width="400" height="80" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="1460" y="390" text-anchor="middle" fill="#ffffff" font-size="24" font-family="monospace">The cat sat on the...</text>
-                <text x="1460" y="420" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">→ mat (next word)</text>
+                <text x="1460" y="390" text-anchor="middle" fill="#ffffff" font-size="24" font-family="VT323, monospace">The cat sat on the...</text>
+                <text x="1460" y="420" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">→ mat (next word)</text>
                 
                 <!-- Left to right arrow -->
                 <path d="M 1340 490 L 1560 490" stroke="#00ff00" stroke-width="3"/>
@@ -505,12 +457,12 @@
                 <text x="1460" y="475" text-anchor="middle" fill="#00ff00" font-size="18">LEFT → RIGHT</text>
                 
                 <!-- Features -->
-                <text x="1460" y="560" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">✓ Text generation</text>
-                <text x="1460" y="595" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">✓ Natural conversation</text>
-                <text x="1460" y="630" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace">✓ Creative writing</text>
+                <text x="1460" y="560" text-anchor="middle" fill="#00ff00" font-size="24" font-family="VT323, monospace">✓ Text generation</text>
+                <text x="1460" y="595" text-anchor="middle" fill="#00ff00" font-size="24" font-family="VT323, monospace">✓ Natural conversation</text>
+                <text x="1460" y="630" text-anchor="middle" fill="#00ff00" font-size="24" font-family="VT323, monospace">✓ Creative writing</text>
                 
                 <!-- Winner indicator -->
-                <text x="960" y="870" text-anchor="middle" fill="#ffff00" font-size="32" font-family="monospace">⚡ GPT's approach proved more scalable for general intelligence</text>
+                <text x="960" y="870" text-anchor="middle" fill="#ffff00" font-size="32" font-family="VT323, monospace">⚡ GPT's approach proved more scalable for general intelligence</text>
             </svg>
         </div>
 
@@ -520,13 +472,13 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">THE SCALING REVOLUTION</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">THE SCALING REVOLUTION</text>
                 
                 <!-- GPT-1 -->
                 <rect x="480" y="510" width="160" height="80" fill="#003300" stroke="#00ff00" stroke-width="2"/>
                 <text x="560" y="540" text-anchor="middle" fill="#00ff00" font-size="24" font-weight="bold">GPT-1</text>
-                <text x="560" y="565" text-anchor="middle" fill="#00aa00" font-size="18">117M params</text>
-                <text x="560" y="615" text-anchor="middle" fill="#008800" font-size="16">Books</text>
+                <text x="560" y="565" text-anchor="middle" fill="#00aa00" font-size="18" font-family="VT323, monospace">117M params</text>
+                <text x="560" y="615" text-anchor="middle" fill="#008800" font-size="16" font-family="VT323, monospace">Books</text>
                 
                 <!-- Arrow -->
                 <path d="M 640 550 L 760 470" stroke="#00ff00" stroke-width="2"/>
@@ -535,8 +487,8 @@
                 <!-- GPT-2 -->
                 <rect x="860" y="410" width="200" height="100" fill="#004400" stroke="#00ff00" stroke-width="2"/>
                 <text x="960" y="445" text-anchor="middle" fill="#00ff00" font-size="28" font-weight="bold">GPT-2</text>
-                <text x="960" y="475" text-anchor="middle" fill="#00aa00" font-size="20">1.5B params</text>
-                <text x="960" y="535" text-anchor="middle" fill="#008800" font-size="16">WebText</text>
+                <text x="960" y="475" text-anchor="middle" fill="#00aa00" font-size="20" font-family="VT323, monospace">1.5B params</text>
+                <text x="960" y="535" text-anchor="middle" fill="#008800" font-size="16" font-family="VT323, monospace">WebText</text>
                 
                 <!-- Arrow -->
                 <path d="M 1060 460 L 1180 380" stroke="#00ff00" stroke-width="2"/>
@@ -545,20 +497,20 @@
                 <!-- GPT-3 -->
                 <rect x="1240" y="260" width="240" height="120" fill="#005500" stroke="#00ff00" stroke-width="3"/>
                 <text x="1360" y="300" text-anchor="middle" fill="#00ff00" font-size="32" font-weight="bold">GPT-3</text>
-                <text x="1360" y="335" text-anchor="middle" fill="#00ff00" font-size="24">175B params</text>
-                <text x="1360" y="405" text-anchor="middle" fill="#00aa00" font-size="18">Internet-scale</text>
+                <text x="1360" y="335" text-anchor="middle" fill="#00ff00" font-size="24" font-family="VT323, monospace">175B params</text>
+                <text x="1360" y="405" text-anchor="middle" fill="#00aa00" font-size="18" font-family="VT323, monospace">Internet-scale</text>
                 
                 <!-- Scaling Laws Box -->
                 <rect x="360" y="720" width="1200" height="200" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="770" text-anchor="middle" fill="#00ff00" font-size="32" font-family="monospace" font-weight="bold">THE SCALING LAWS</text>
+                <text x="960" y="770" text-anchor="middle" fill="#00ff00" font-size="32" font-family="VT323, monospace" font-weight="bold">THE SCALING LAWS</text>
                 
-                <text x="450" y="820" fill="#00ffff" font-size="24" font-family="monospace">📊 MORE DATA = Better world understanding</text>
-                <text x="450" y="860" fill="#00ffff" font-size="24" font-family="monospace">🧠 BIGGER MODELS = More pattern capacity</text>
-                <text x="450" y="900" fill="#00ffff" font-size="24" font-family="monospace">⚡ MORE COMPUTE = Ability to train giants</text>
+                <text x="450" y="820" fill="#00ffff" font-size="24" font-family="VT323, monospace">📊 MORE DATA = Better world understanding</text>
+                <text x="450" y="860" fill="#00ffff" font-size="24" font-family="VT323, monospace">🧠 BIGGER MODELS = More pattern capacity</text>
+                <text x="450" y="900" fill="#00ffff" font-size="24" font-family="VT323, monospace">⚡ MORE COMPUTE = Ability to train giants</text>
                 
                 <!-- Exponential curve -->
                 <path d="M 300 600 Q 960 200 1620 100" fill="none" stroke="#ffff00" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
-                <text x="1400" y="150" fill="#ffff00" font-size="20" font-family="monospace">EXPONENTIAL GROWTH</text>
+                <text x="1400" y="150" fill="#ffff00" font-size="20" font-family="VT323, monospace">EXPONENTIAL GROWTH</text>
             </svg>
         </div>
 
@@ -568,19 +520,19 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">EMERGENT ABILITIES</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="VT323, monospace" font-weight="bold">EMERGENT ABILITIES</text>
                 
-                <text x="960" y="200" text-anchor="middle" fill="#00ffff" font-size="32" font-family="monospace">As models scale, unexpected capabilities emerge:</text>
+                <text x="960" y="200" text-anchor="middle" fill="#00ffff" font-size="32" font-family="VT323, monospace">As models scale, unexpected capabilities emerge:</text>
                 
                 <!-- Small model -->
                 <circle cx="560" cy="350" r="40" fill="none" stroke="#666666" stroke-width="2"/>
                 <text x="560" y="355" text-anchor="middle" fill="#666666" font-size="20">Small</text>
-                <text x="560" y="420" text-anchor="middle" fill="#666666" font-size="22">Pattern matching</text>
+                <text x="560" y="420" text-anchor="middle" fill="#666666" font-size="22" font-family="VT323, monospace">Pattern matching</text>
                 
                 <!-- Medium model -->
                 <circle cx="960" cy="350" r="60" fill="none" stroke="#00aa00" stroke-width="3"/>
                 <text x="960" y="355" text-anchor="middle" fill="#00aa00" font-size="24">Medium</text>
-                <text x="960" y="440" text-anchor="middle" fill="#00aa00" font-size="22">Basic reasoning</text>
+                <text x="960" y="440" text-anchor="middle" fill="#00aa00" font-size="22" font-family="VT323, monospace">Basic reasoning</text>
                 
                 <!-- Large model -->
                 <circle cx="1360" cy="350" r="90" fill="none" stroke="#00ff00" stroke-width="4"/>
@@ -597,13 +549,13 @@
                 <rect x="360" y="540" width="1200" height="320" fill="#001100" stroke="#00ff00" stroke-width="3"/>
                 <text x="960" y="590" text-anchor="middle" fill="#00ff00" font-size="30" font-weight="bold">UNEXPECTED CAPABILITIES:</text>
                 
-                <text x="460" y="650" fill="#00ffff" font-size="26" font-family="monospace">• Few-shot learning without fine-tuning</text>
-                <text x="460" y="695" fill="#00ffff" font-size="26" font-family="monospace">• Complex arithmetic and reasoning</text>
-                <text x="460" y="740" fill="#00ffff" font-size="26" font-family="monospace">• Code generation and debugging</text>
-                <text x="460" y="785" fill="#00ffff" font-size="26" font-family="monospace">• Multilingual translation</text>
-                <text x="460" y="830" fill="#00ffff" font-size="26" font-family="monospace">• Chain-of-thought reasoning</text>
+                <text x="460" y="650" fill="#00ffff" font-size="26" font-family="VT323, monospace">• Few-shot learning without fine-tuning</text>
+                <text x="460" y="695" fill="#00ffff" font-size="26" font-family="VT323, monospace">• Complex arithmetic and reasoning</text>
+                <text x="460" y="740" fill="#00ffff" font-size="26" font-family="VT323, monospace">• Code generation and debugging</text>
+                <text x="460" y="785" fill="#00ffff" font-size="26" font-family="VT323, monospace">• Multilingual translation</text>
+                <text x="460" y="830" fill="#00ffff" font-size="26" font-family="VT323, monospace">• Chain-of-thought reasoning</text>
                 
-                <text x="960" y="960" text-anchor="middle" fill="#ffff00" font-size="30" font-family="monospace">💡 Scale brings qualitative changes, not just quantitative improvements</text>
+                <text x="960" y="960" text-anchor="middle" fill="#ffff00" font-size="30" font-family="VT323, monospace">💡 Scale brings qualitative changes, not just quantitative improvements</text>
             </svg>
         </div>
 
@@ -613,22 +565,22 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">THE HALLUCINATION CHALLENGE</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">THE HALLUCINATION CHALLENGE</text>
                 
                 <!-- Example dialogue -->
                 <rect x="360" y="220" width="1200" height="200" fill="#330000" stroke="#ff0000" stroke-width="2"/>
                 <text x="960" y="260" text-anchor="middle" fill="#ff6666" font-size="24" font-weight="bold">WHEN AI MAKES THINGS UP</text>
                 
-                <text x="410" y="310" fill="#00ff00" font-size="22" font-family="monospace">USER: "When did Columbus discover electricity?"</text>
-                <text x="410" y="350" fill="#ff0000" font-size="22" font-family="monospace">GPT-3: "Columbus discovered electricity in 1492 when</text>
-                <text x="490" y="380" fill="#ff0000" font-size="22" font-family="monospace">his ships were struck by lightning..."</text>
+                <text x="410" y="310" fill="#00ff00" font-size="22" font-family="VT323, monospace">USER: "When did Columbus discover electricity?"</text>
+                <text x="410" y="350" fill="#ff0000" font-size="22" font-family="VT323, monospace">GPT-3: "Columbus discovered electricity in 1492 when</text>
+                <text x="490" y="380" fill="#ff0000" font-size="22" font-family="VT323, monospace">his ships were struck by lightning..."</text>
                 
                 <!-- Why this happens -->
                 <text x="960" y="500" text-anchor="middle" fill="#00ff00" font-size="32" font-weight="bold">WHY THIS HAPPENS:</text>
                 
-                <text x="560" y="560" fill="#00ffff" font-size="24" font-family="monospace">• Models optimize for plausibility, not truth</text>
-                <text x="560" y="600" fill="#00ffff" font-size="24" font-family="monospace">• Pattern completion vs. factual accuracy</text>
-                <text x="560" y="640" fill="#00ffff" font-size="24" font-family="monospace">• No inherent concept of "I don't know"</text>
+                <text x="560" y="560" fill="#00ffff" font-size="24" font-family="VT323, monospace">• Models optimize for plausibility, not truth</text>
+                <text x="560" y="600" fill="#00ffff" font-size="24" font-family="VT323, monospace">• Pattern completion vs. factual accuracy</text>
+                <text x="560" y="640" fill="#00ffff" font-size="24" font-family="VT323, monospace">• No inherent concept of "I don't know"</text>
                 
                 <!-- Two critical needs -->
                 <rect x="360" y="700" width="1200" height="180" fill="#001100" stroke="#00ff00" stroke-width="2"/>
@@ -636,11 +588,11 @@
                 
                 <rect x="510" y="780" width="300" height="60" fill="#002200" stroke="#00ff00" stroke-width="1"/>
                 <text x="660" y="815" text-anchor="middle" fill="#00ff00" font-size="24">1️⃣ ALIGNMENT</text>
-                <text x="660" y="835" text-anchor="middle" fill="#00aa00" font-size="18">Follow instructions</text>
+                <text x="660" y="835" text-anchor="middle" fill="#00aa00" font-size="18" font-family="VT323, monospace">Follow instructions</text>
                 
                 <rect x="1110" y="780" width="300" height="60" fill="#002200" stroke="#00ff00" stroke-width="1"/>
                 <text x="1260" y="815" text-anchor="middle" fill="#00ff00" font-size="24">2️⃣ REASONING</text>
-                <text x="1260" y="835" text-anchor="middle" fill="#00aa00" font-size="18">"Think" before answering</text>
+                <text x="1260" y="835" text-anchor="middle" fill="#00aa00" font-size="18" font-family="VT323, monospace">"Think" before answering</text>
             </svg>
         </div>
 
@@ -650,16 +602,16 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">THE CODE CONNECTION</text>
-                <text x="960" y="180" text-anchor="middle" fill="#00ffff" font-size="32" font-family="monospace">How Programming Unlocked Reasoning (GPT-3.5)</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">THE CODE CONNECTION</text>
+                <text x="960" y="180" text-anchor="middle" fill="#00ffff" font-size="32" font-family="VT323, monospace">How Programming Unlocked Reasoning (GPT-3.5)</text>
                 
                 <!-- Code block -->
                 <rect x="340" y="280" width="240" height="200" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="460" y="320" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">if (condition) {</text>
-                <text x="460" y="350" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">  execute();</text>
-                <text x="460" y="380" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">} else {</text>
-                <text x="460" y="410" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">  alternative();</text>
-                <text x="460" y="440" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">}</text>
+                <text x="460" y="320" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">if (condition) {</text>
+                <text x="460" y="350" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">  execute();</text>
+                <text x="460" y="380" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">} else {</text>
+                <text x="460" y="410" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">  alternative();</text>
+                <text x="460" y="440" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">}</text>
                 
                 <!-- Arrow -->
                 <path d="M 580 380 L 780 380" stroke="#00ff00" stroke-width="3"/>
@@ -669,8 +621,8 @@
                 <!-- Logic circle -->
                 <circle cx="960" cy="380" r="80" fill="none" stroke="#00ffff" stroke-width="2"/>
                 <text x="960" y="360" text-anchor="middle" fill="#00ffff" font-size="24" font-weight="bold">LOGIC</text>
-                <text x="960" y="390" text-anchor="middle" fill="#00ffff" font-size="18">Structure</text>
-                <text x="960" y="415" text-anchor="middle" fill="#00ffff" font-size="18">Conditions</text>
+                <text x="960" y="390" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">Structure</text>
+                <text x="960" y="415" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">Conditions</text>
                 
                 <!-- Arrow -->
                 <path d="M 1040 380 L 1240 380" stroke="#00ff00" stroke-width="3"/>
@@ -680,17 +632,17 @@
                 <!-- Reasoning -->
                 <rect x="1340" y="300" width="200" height="160" fill="none" stroke="#ffff00" stroke-width="3"/>
                 <text x="1440" y="340" text-anchor="middle" fill="#ffff00" font-size="24" font-weight="bold">REASONING</text>
-                <text x="1440" y="375" text-anchor="middle" fill="#ffff00" font-size="18">Step-by-step</text>
-                <text x="1440" y="400" text-anchor="middle" fill="#ffff00" font-size="18">Problem solving</text>
-                <text x="1440" y="425" text-anchor="middle" fill="#ffff00" font-size="18">Abstraction</text>
+                <text x="1440" y="375" text-anchor="middle" fill="#ffff00" font-size="18" font-family="VT323, monospace">Step-by-step</text>
+                <text x="1440" y="400" text-anchor="middle" fill="#ffff00" font-size="18" font-family="VT323, monospace">Problem solving</text>
+                <text x="1440" y="425" text-anchor="middle" fill="#ffff00" font-size="18" font-family="VT323, monospace">Abstraction</text>
                 
                 <!-- What code taught -->
                 <rect x="360" y="650" width="1200" height="250" fill="#001100" stroke="#00ff00" stroke-width="2"/>
                 <text x="960" y="700" text-anchor="middle" fill="#00ff00" font-size="28" font-weight="bold">TRAINING ON CODE TAUGHT MODELS:</text>
-                <text x="450" y="750" fill="#00ffff" font-size="22" font-family="monospace">✓ Logical structure and syntax</text>
-                <text x="450" y="790" fill="#00ffff" font-size="22" font-family="monospace">✓ Step-by-step execution</text>
-                <text x="450" y="830" fill="#00ffff" font-size="22" font-family="monospace">✓ Variable tracking and state management</text>
-                <text x="450" y="870" fill="#00ffff" font-size="22" font-family="monospace">✓ Conditional reasoning (if-then-else)</text>
+                <text x="450" y="750" fill="#00ffff" font-size="22" font-family="VT323, monospace">✓ Logical structure and syntax</text>
+                <text x="450" y="790" fill="#00ffff" font-size="22" font-family="VT323, monospace">✓ Step-by-step execution</text>
+                <text x="450" y="830" fill="#00ffff" font-size="22" font-family="VT323, monospace">✓ Variable tracking and state management</text>
+                <text x="450" y="870" fill="#00ffff" font-size="22" font-family="VT323, monospace">✓ Conditional reasoning (if-then-else)</text>
             </svg>
         </div>
 
@@ -700,14 +652,14 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">MAKING AI HELPFUL: RLHF</text>
-                <text x="960" y="180" text-anchor="middle" fill="#00ffff" font-size="30" font-family="monospace">Reinforcement Learning from Human Feedback (ChatGPT)</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">MAKING AI HELPFUL: RLHF</text>
+                <text x="960" y="180" text-anchor="middle" fill="#00ffff" font-size="30" font-family="VT323, monospace">Reinforcement Learning from Human Feedback (ChatGPT)</text>
                 
                 <!-- Step 1 -->
                 <rect x="260" y="340" width="200" height="120" fill="#001100" stroke="#00ff00" stroke-width="2"/>
                 <text x="360" y="370" text-anchor="middle" fill="#00ff00" font-size="22" font-weight="bold">STEP 1</text>
-                <text x="360" y="400" text-anchor="middle" fill="#00ffff" font-size="18">Humans rank</text>
-                <text x="360" y="425" text-anchor="middle" fill="#00ffff" font-size="18">AI responses</text>
+                <text x="360" y="400" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">Humans rank</text>
+                <text x="360" y="425" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">AI responses</text>
                 <text x="360" y="450" text-anchor="middle" fill="#00ff00" font-size="24">👍 👎</text>
                 
                 <path d="M 460 400 L 610 400" stroke="#00ff00" stroke-width="2"/>
@@ -716,8 +668,8 @@
                 <!-- Step 2 -->
                 <rect x="760" y="340" width="200" height="120" fill="#001100" stroke="#00ff00" stroke-width="2"/>
                 <text x="860" y="370" text-anchor="middle" fill="#00ff00" font-size="22" font-weight="bold">STEP 2</text>
-                <text x="860" y="400" text-anchor="middle" fill="#00ffff" font-size="18">Train reward</text>
-                <text x="860" y="425" text-anchor="middle" fill="#00ffff" font-size="18">model</text>
+                <text x="860" y="400" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">Train reward</text>
+                <text x="860" y="425" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">model</text>
                 <text x="860" y="450" text-anchor="middle" fill="#00ff00" font-size="24">🎯</text>
                 
                 <path d="M 960 400 L 1110 400" stroke="#00ff00" stroke-width="2"/>
@@ -726,17 +678,17 @@
                 <!-- Step 3 -->
                 <rect x="1260" y="340" width="200" height="120" fill="#001100" stroke="#00ff00" stroke-width="2"/>
                 <text x="1360" y="370" text-anchor="middle" fill="#00ff00" font-size="22" font-weight="bold">STEP 3</text>
-                <text x="1360" y="400" text-anchor="middle" fill="#00ffff" font-size="18">Optimize LLM</text>
-                <text x="1360" y="425" text-anchor="middle" fill="#00ffff" font-size="18">with rewards</text>
+                <text x="1360" y="400" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">Optimize LLM</text>
+                <text x="1360" y="425" text-anchor="middle" fill="#00ffff" font-size="18" font-family="VT323, monospace">with rewards</text>
                 <text x="1360" y="450" text-anchor="middle" fill="#00ff00" font-size="24">🚀</text>
                 
                 <!-- Results -->
                 <rect x="360" y="650" width="1200" height="250" fill="#002200" stroke="#00ff00" stroke-width="2"/>
                 <text x="960" y="700" text-anchor="middle" fill="#00ff00" font-size="28" font-weight="bold">RESULT: AI THAT...</text>
-                <text x="450" y="750" fill="#00ffff" font-size="22" font-family="monospace">✓ Follows instructions accurately</text>
-                <text x="450" y="790" fill="#00ffff" font-size="22" font-family="monospace">✓ Refuses harmful requests</text>
-                <text x="450" y="830" fill="#00ffff" font-size="22" font-family="monospace">✓ Admits uncertainty</text>
-                <text x="450" y="870" fill="#00ffff" font-size="22" font-family="monospace">✓ Provides helpful, harmless, honest responses</text>
+                <text x="450" y="750" fill="#00ffff" font-size="22" font-family="VT323, monospace">✓ Follows instructions accurately</text>
+                <text x="450" y="790" fill="#00ffff" font-size="22" font-family="VT323, monospace">✓ Refuses harmful requests</text>
+                <text x="450" y="830" fill="#00ffff" font-size="22" font-family="VT323, monospace">✓ Admits uncertainty</text>
+                <text x="450" y="870" fill="#00ffff" font-size="22" font-family="VT323, monospace">✓ Provides helpful, harmless, honest responses</text>
             </svg>
         </div>
 
@@ -746,26 +698,26 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">UNLOCKING DEEP REASONING</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">UNLOCKING DEEP REASONING</text>
                 
                 <!-- What is reasoning -->
                 <rect x="360" y="200" width="1200" height="200" fill="#001100" stroke="#00ff00" stroke-width="2"/>
                 <text x="960" y="250" text-anchor="middle" fill="#00ff00" font-size="28" font-weight="bold">WHAT DOES REASONING MEAN?</text>
-                <text x="450" y="300" fill="#00ffff" font-size="22" font-family="monospace">🔗 Connecting dots between concepts</text>
-                <text x="450" y="340" fill="#00ffff" font-size="22" font-family="monospace">💡 Inferring new information from existing knowledge</text>
-                <text x="450" y="380" fill="#00ffff" font-size="22" font-family="monospace">⚙️ Understanding cause and effect</text>
+                <text x="450" y="300" fill="#00ffff" font-size="22" font-family="VT323, monospace">🔗 Connecting dots between concepts</text>
+                <text x="450" y="340" fill="#00ffff" font-size="22" font-family="VT323, monospace">💡 Inferring new information from existing knowledge</text>
+                <text x="450" y="380" fill="#00ffff" font-size="22" font-family="VT323, monospace">⚙️ Understanding cause and effect</text>
                 
                 <!-- The insight -->
                 <rect x="460" y="480" width="1000" height="120" fill="#330011" stroke="#ff6666" stroke-width="2"/>
-                <text x="960" y="525" text-anchor="middle" fill="#ff6666" font-size="24" font-style="italic">"LLMs already know how to reason,</text>
-                <text x="960" y="555" text-anchor="middle" fill="#ff6666" font-size="24" font-style="italic">but they're often too lazy to think deeply..."</text>
+                <text x="960" y="525" text-anchor="middle" fill="#ff6666" font-size="24" font-style="italic" font-family="VT323, monospace">"LLMs already know how to reason,</text>
+                <text x="960" y="555" text-anchor="middle" fill="#ff6666" font-size="24" font-style="italic" font-family="VT323, monospace">but they're often too lazy to think deeply..."</text>
                 
                 <!-- The simple magic -->
                 <rect x="560" y="690" width="800" height="180" fill="#002200" stroke="#00ff00" stroke-width="2"/>
                 <text x="960" y="730" text-anchor="middle" fill="#00ff00" font-size="28" font-weight="bold">THE SIMPLE MAGIC:</text>
-                <text x="960" y="770" text-anchor="middle" fill="#00ffff" font-size="22" font-family="monospace">"Think step by step"</text>
-                <text x="960" y="805" text-anchor="middle" fill="#00ffff" font-size="22" font-family="monospace">"Let's work through this carefully"</text>
-                <text x="960" y="840" text-anchor="middle" fill="#00ffff" font-size="22" font-family="monospace">"Consider all aspects before answering"</text>
+                <text x="960" y="770" text-anchor="middle" fill="#00ffff" font-size="22" font-family="VT323, monospace">"Think step by step"</text>
+                <text x="960" y="805" text-anchor="middle" fill="#00ffff" font-size="22" font-family="VT323, monospace">"Let's work through this carefully"</text>
+                <text x="960" y="840" text-anchor="middle" fill="#00ffff" font-size="22" font-family="VT323, monospace">"Consider all aspects before answering"</text>
             </svg>
         </div>
 
@@ -775,33 +727,33 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">TEACHING MODELS TO THINK</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">TEACHING MODELS TO THINK</text>
                 
                 <!-- Traditional -->
                 <rect x="360" y="300" width="400" height="300" fill="#330000" stroke="#ff6666" stroke-width="2"/>
                 <text x="560" y="350" text-anchor="middle" fill="#ff6666" font-size="28" font-weight="bold">TRADITIONAL</text>
                 
-                <text x="410" y="410" fill="#ffaaaa" font-size="20" font-family="monospace">✓ Reward correct answers</text>
-                <text x="410" y="450" fill="#ff6666" font-size="20" font-family="monospace">✗ Ignore the process</text>
+                <text x="410" y="410" fill="#ffaaaa" font-size="20" font-family="VT323, monospace">✓ Reward correct answers</text>
+                <text x="410" y="450" fill="#ff6666" font-size="20" font-family="VT323, monospace">✗ Ignore the process</text>
                 
                 <rect x="410" y="510" width="300" height="60" fill="#660000" stroke="#ff6666" stroke-width="1"/>
-                <text x="560" y="545" text-anchor="middle" fill="#ff6666" font-size="18">Result: Shortcuts &amp;</text>
-                <text x="560" y="565" text-anchor="middle" fill="#ff6666" font-size="18">shallow thinking</text>
+                <text x="560" y="545" text-anchor="middle" fill="#ff6666" font-size="18" font-family="VT323, monospace">Result: Shortcuts &amp;</text>
+                <text x="560" y="565" text-anchor="middle" fill="#ff6666" font-size="18" font-family="VT323, monospace">shallow thinking</text>
                 
                 <!-- New Approach -->
                 <rect x="1160" y="300" width="400" height="300" fill="#003300" stroke="#00ff00" stroke-width="2"/>
                 <text x="1360" y="350" text-anchor="middle" fill="#00ff00" font-size="28" font-weight="bold">NEW APPROACH</text>
                 
-                <text x="1210" y="410" fill="#00ff00" font-size="20" font-family="monospace">✓ Reward correct answers</text>
-                <text x="1210" y="450" fill="#00ff00" font-size="20" font-family="monospace">✓ Reward reasoning steps</text>
+                <text x="1210" y="410" fill="#00ff00" font-size="20" font-family="VT323, monospace">✓ Reward correct answers</text>
+                <text x="1210" y="450" fill="#00ff00" font-size="20" font-family="VT323, monospace">✓ Reward reasoning steps</text>
                 
                 <rect x="1210" y="510" width="300" height="60" fill="#006600" stroke="#00ff00" stroke-width="1"/>
-                <text x="1360" y="545" text-anchor="middle" fill="#00ff00" font-size="18">Result: Systematic,</text>
-                <text x="1360" y="565" text-anchor="middle" fill="#00ff00" font-size="18">reliable reasoning</text>
+                <text x="1360" y="545" text-anchor="middle" fill="#00ff00" font-size="18" font-family="VT323, monospace">Result: Systematic,</text>
+                <text x="1360" y="565" text-anchor="middle" fill="#00ff00" font-size="18" font-family="VT323, monospace">reliable reasoning</text>
                 
                 <!-- Visualization of step rewards -->
-                <text x="960" y="750" text-anchor="middle" fill="#00ffff" font-size="24" font-family="monospace">Step 1 ✓ → Step 2 ✓ → Step 3 ✓ → Answer ✓</text>
-                <text x="960" y="790" text-anchor="middle" fill="#00ff00" font-size="20" font-family="monospace">Each step gets rewarded, not just the final answer</text>
+                <text x="960" y="750" text-anchor="middle" fill="#00ffff" font-size="24" font-family="VT323, monospace">Step 1 ✓ → Step 2 ✓ → Step 3 ✓ → Answer ✓</text>
+                <text x="960" y="790" text-anchor="middle" fill="#00ff00" font-size="20" font-family="VT323, monospace">Each step gets rewarded, not just the final answer</text>
             </svg>
         </div>
 
@@ -811,7 +763,7 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="monospace" font-weight="bold">THE ROAD TO AGI</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="64" font-family="VT323, monospace" font-weight="bold">THE ROAD TO AGI</text>
                 
                 <!-- Path (drawn first so it goes behind circles) -->
                 <path d="M 360 500 L 1560 500" stroke="#00ff00" stroke-width="3" stroke-dasharray="10,5" opacity="0.5"/>
@@ -826,8 +778,8 @@
                     <text x="0" y="-70" text-anchor="middle" fill="#00ffff" font-size="40">🛠️</text>
                     <text x="0" y="-5" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">TOOL</text>
                     <text x="0" y="15" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">USAGE</text>
-                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18">APIs, Search</text>
-                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18">Calculators</text>
+                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18" font-family="VT323, monospace">APIs, Search</text>
+                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18" font-family="VT323, monospace">Calculators</text>
                 </g>
                 
                 <!-- Multimodal -->
@@ -836,8 +788,8 @@
                     <text x="0" y="-70" text-anchor="middle" fill="#00ffff" font-size="40">🌍</text>
                     <text x="0" y="-5" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">MULTI-</text>
                     <text x="0" y="15" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">MODAL</text>
-                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18">Vision, Audio</text>
-                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18">Video</text>
+                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18" font-family="VT323, monospace">Vision, Audio</text>
+                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18" font-family="VT323, monospace">Video</text>
                 </g>
                 
                 <!-- Memory -->
@@ -846,8 +798,8 @@
                     <text x="0" y="-70" text-anchor="middle" fill="#00ffff" font-size="40">💭</text>
                     <text x="0" y="-5" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">MEMORY &amp;</text>
                     <text x="0" y="15" text-anchor="middle" fill="#00ffff" font-size="20" font-weight="bold">LEARNING</text>
-                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18">Continual</text>
-                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18">Updates</text>
+                    <text x="0" y="95" text-anchor="middle" fill="#00aaaa" font-size="18" font-family="VT323, monospace">Continual</text>
+                    <text x="0" y="115" text-anchor="middle" fill="#00aaaa" font-size="18" font-family="VT323, monospace">Updates</text>
                 </g>
                 
                 <!-- Aligned Values -->
@@ -856,8 +808,8 @@
                     <text x="0" y="-70" text-anchor="middle" fill="#ffff00" font-size="40">❤️</text>
                     <text x="0" y="-5" text-anchor="middle" fill="#ffff00" font-size="20" font-weight="bold">ALIGNED</text>
                     <text x="0" y="15" text-anchor="middle" fill="#ffff00" font-size="20" font-weight="bold">VALUES</text>
-                    <text x="0" y="95" text-anchor="middle" fill="#aaaa00" font-size="18">Human</text>
-                    <text x="0" y="115" text-anchor="middle" fill="#aaaa00" font-size="18">Benefits</text>
+                    <text x="0" y="95" text-anchor="middle" fill="#aaaa00" font-size="18" font-family="VT323, monospace">Human</text>
+                    <text x="0" y="115" text-anchor="middle" fill="#aaaa00" font-size="18" font-family="VT323, monospace">Benefits</text>
                 </g>
                 
                 <!-- AGI -->
@@ -866,7 +818,7 @@
                 
                 <!-- Bottom note -->
                 <rect x="360" y="850" width="1200" height="80" fill="#001100" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="900" text-anchor="middle" fill="#00ff00" font-size="28" font-family="monospace">Each milestone builds toward human-level general intelligence</text>
+                <text x="960" y="900" text-anchor="middle" fill="#00ff00" font-size="28" font-family="VT323, monospace">Each milestone builds toward human-level general intelligence</text>
             </svg>
         </div>
 
@@ -876,25 +828,25 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">THE ALIGNMENT CHALLENGE</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">THE ALIGNMENT CHALLENGE</text>
                 
                 <!-- Quote box -->
                 <rect x="260" y="220" width="1400" height="400" fill="#001100" stroke="#00ff00" stroke-width="2"/>
                 
-                <text x="960" y="280" text-anchor="middle" fill="#00ffff" font-size="28" font-family="monospace" font-weight="bold">Geoffrey Hinton:</text>
+                <text x="960" y="280" text-anchor="middle" fill="#00ffff" font-size="28" font-family="VT323, monospace" font-weight="bold">Geoffrey Hinton:</text>
                 
-                <text x="960" y="350" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace" font-style="italic">"We have to make it so that when they're more powerful than us</text>
-                <text x="960" y="390" text-anchor="middle" fill="#00ff00" font-size="24" font-family="monospace" font-style="italic">and smarter than us, they still care about us..."</text>
+                <text x="960" y="350" text-anchor="middle" fill="#00ff00" font-size="24" font-family="VT323, monospace" font-style="italic">"We have to make it so that when they're more powerful than us</text>
+                <text x="960" y="390" text-anchor="middle" fill="#00ff00" font-size="24" font-family="VT323, monospace" font-style="italic">and smarter than us, they still care about us..."</text>
                 
-                <text x="960" y="460" text-anchor="middle" fill="#00ffff" font-size="24" font-family="monospace" font-style="italic">"The only model we have of a more intelligent thing being controlled</text>
-                <text x="960" y="500" text-anchor="middle" fill="#00ffff" font-size="24" font-family="monospace" font-style="italic">by a less intelligent thing is a mother being controlled by her baby..."</text>
+                <text x="960" y="460" text-anchor="middle" fill="#00ffff" font-size="24" font-family="VT323, monospace" font-style="italic">"The only model we have of a more intelligent thing being controlled</text>
+                <text x="960" y="500" text-anchor="middle" fill="#00ffff" font-size="24" font-family="VT323, monospace" font-style="italic">by a less intelligent thing is a mother being controlled by her baby..."</text>
                 
-                <text x="960" y="570" text-anchor="middle" fill="#ffff00" font-size="24" font-family="monospace" font-style="italic">"If it's not going to parent me, it's going to replace me."</text>
+                <text x="960" y="570" text-anchor="middle" fill="#ffff00" font-size="24" font-family="VT323, monospace" font-style="italic">"If it's not going to parent me, it's going to replace me."</text>
                 
                 <!-- Core question -->
                 <rect x="460" y="720" width="1000" height="120" fill="#002200" stroke="#00ff00" stroke-width="2"/>
                 <text x="960" y="770" text-anchor="middle" fill="#00ff00" font-size="28" font-weight="bold">THE CORE QUESTION:</text>
-                <text x="960" y="810" text-anchor="middle" fill="#00ffff" font-size="24" font-family="monospace">How do we ensure superintelligent AI remains beneficial to humanity?</text>
+                <text x="960" y="810" text-anchor="middle" fill="#00ffff" font-size="24" font-family="VT323, monospace">How do we ensure superintelligent AI remains beneficial to humanity?</text>
             </svg>
         </div>
 
@@ -904,23 +856,23 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">QUESTIONS FOR DISCUSSION</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">QUESTIONS FOR DISCUSSION</text>
                 
                 <!-- Question 1 -->
                 <rect x="360" y="240" width="1200" height="120" fill="#001133" stroke="#0099ff" stroke-width="2"/>
                 <text x="960" y="280" text-anchor="middle" fill="#0099ff" font-size="28" font-weight="bold">1. DO ANDROIDS DREAM? 💭</text>
-                <text x="960" y="320" text-anchor="middle" fill="#00ccff" font-size="22" font-family="monospace">Can AI have subjective experiences or consciousness?</text>
+                <text x="960" y="320" text-anchor="middle" fill="#00ccff" font-size="22" font-family="VT323, monospace">Can AI have subjective experiences or consciousness?</text>
                 
                 <!-- Question 2 -->
                 <rect x="360" y="440" width="1200" height="120" fill="#113300" stroke="#00ff00" stroke-width="2"/>
                 <text x="960" y="480" text-anchor="middle" fill="#00ff00" font-size="28" font-weight="bold">2. AI VS HUMAN INTELLIGENCE 🧠</text>
-                <text x="960" y="520" text-anchor="middle" fill="#00ffcc" font-size="22" font-family="monospace">Do you consider AI the same as human beings?</text>
-                <text x="960" y="550" text-anchor="middle" fill="#00ffcc" font-size="20" font-family="monospace">If not, under what conditions would you?</text>
+                <text x="960" y="520" text-anchor="middle" fill="#00ffcc" font-size="22" font-family="VT323, monospace">Do you consider AI the same as human beings?</text>
+                <text x="960" y="550" text-anchor="middle" fill="#00ffcc" font-size="20" font-family="VT323, monospace">If not, under what conditions would you?</text>
                 
                 <!-- Question 3 -->
                 <rect x="360" y="640" width="1200" height="120" fill="#331100" stroke="#ffaa00" stroke-width="2"/>
                 <text x="960" y="680" text-anchor="middle" fill="#ffaa00" font-size="28" font-weight="bold">3. THE PATH FORWARD 🛤️</text>
-                <text x="960" y="720" text-anchor="middle" fill="#ffcc00" font-size="22" font-family="monospace">What is the path towards true machine consciousness?</text>
+                <text x="960" y="720" text-anchor="middle" fill="#ffcc00" font-size="22" font-family="VT323, monospace">What is the path towards true machine consciousness?</text>
             </svg>
         </div>
 
@@ -930,28 +882,28 @@
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
-                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="monospace" font-weight="bold">KEY TAKEAWAYS</text>
+                <text x="960" y="120" text-anchor="middle" fill="#00ff00" font-size="56" font-family="VT323, monospace" font-weight="bold">KEY TAKEAWAYS</text>
                 
                 <!-- Takeaway points -->
                 <circle cx="410" cy="250" r="8" fill="#00ff00"/>
-                <text x="450" y="255" fill="#00ff00" font-size="24" font-family="monospace">LANGUAGE IS THE KEY - It encodes human knowledge and reasoning</text>
+                <text x="450" y="255" fill="#00ff00" font-size="24" font-family="VT323, monospace">LANGUAGE IS THE KEY - It encodes human knowledge and reasoning</text>
                 
                 <circle cx="410" cy="325" r="8" fill="#00ff00"/>
-                <text x="450" y="330" fill="#00ff00" font-size="24" font-family="monospace">SCALE MATTERS - Emergent abilities appear with size</text>
+                <text x="450" y="330" fill="#00ff00" font-size="24" font-family="VT323, monospace">SCALE MATTERS - Emergent abilities appear with size</text>
                 
                 <circle cx="410" cy="400" r="8" fill="#00ff00"/>
-                <text x="450" y="405" fill="#00ff00" font-size="24" font-family="monospace">CODE TEACHES LOGIC - Programming data improved reasoning</text>
+                <text x="450" y="405" fill="#00ff00" font-size="24" font-family="VT323, monospace">CODE TEACHES LOGIC - Programming data improved reasoning</text>
                 
                 <circle cx="410" cy="475" r="8" fill="#00ff00"/>
-                <text x="450" y="480" fill="#00ff00" font-size="24" font-family="monospace">ALIGNMENT IS CRUCIAL - We must reward the right behaviors</text>
+                <text x="450" y="480" fill="#00ff00" font-size="24" font-family="VT323, monospace">ALIGNMENT IS CRUCIAL - We must reward the right behaviors</text>
                 
                 <circle cx="410" cy="550" r="8" fill="#00ff00"/>
-                <text x="450" y="555" fill="#00ff00" font-size="24" font-family="monospace">REASONING CAN BE TAUGHT - Through careful reward design</text>
+                <text x="450" y="555" fill="#00ff00" font-size="24" font-family="VT323, monospace">REASONING CAN BE TAUGHT - Through careful reward design</text>
                 
                 <!-- Final message -->
                 <rect x="360" y="720" width="1200" height="120" fill="#002200" stroke="#00ff00" stroke-width="2"/>
-                <text x="960" y="780" text-anchor="middle" fill="#ffff00" font-size="28" font-family="monospace">💡 The journey from pattern matching to reasoning</text>
-                <text x="960" y="815" text-anchor="middle" fill="#ffff00" font-size="28" font-family="monospace">is just beginning!</text>
+                <text x="960" y="780" text-anchor="middle" fill="#ffff00" font-size="28" font-family="VT323, monospace">💡 The journey from pattern matching to reasoning</text>
+                <text x="960" y="815" text-anchor="middle" fill="#ffff00" font-size="28" font-family="VT323, monospace">is just beginning!</text>
             </svg>
         </div>
 
@@ -982,50 +934,50 @@
                 
                 <!-- Animated Matrix rain effect background -->
                 <g opacity="0.25">
-                    <text x="200" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 0s;">01010100</text>
-                    <text x="350" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 0.5s;">01001000</text>
-                    <text x="500" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 1s;">01000001</text>
-                    <text x="650" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 1.5s;">01001110</text>
-                    <text x="800" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 2s;">01001011</text>
-                    <text x="950" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 0.3s;">00100000</text>
-                    <text x="1100" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 2.5s;">01011001</text>
-                    <text x="1250" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.8s;">01001111</text>
-                    <text x="1400" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 1.3s;">01010101</text>
-                    <text x="1550" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 1.8s;">00100001</text>
-                    <text x="1700" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.3s;">01000001</text>
-                    <text x="1850" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 0.6s;">01001001</text>
+                    <text x="200" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 0s;">01010100</text>
+                    <text x="350" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 0.5s;">01001000</text>
+                    <text x="500" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 1s;">01000001</text>
+                    <text x="650" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 1.5s;">01001110</text>
+                    <text x="800" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 2s;">01001011</text>
+                    <text x="950" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 0.3s;">00100000</text>
+                    <text x="1100" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 2.5s;">01011001</text>
+                    <text x="1250" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 8s; animation-delay: 0.8s;">01001111</text>
+                    <text x="1400" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 1.3s;">01010101</text>
+                    <text x="1550" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 1.8s;">00100001</text>
+                    <text x="1700" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 2.3s;">01000001</text>
+                    <text x="1850" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 0.6s;">01001001</text>
                     
                     <!-- Second wave with different timing -->
-                    <text x="150" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 3s;">10101010</text>
-                    <text x="300" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 3.5s;">11110000</text>
-                    <text x="450" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4s;">00110011</text>
-                    <text x="600" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.2s;">10110110</text>
-                    <text x="750" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 4.5s;">11001100</text>
-                    <text x="900" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 3.8s;">01110111</text>
-                    <text x="1050" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4.2s;">10001000</text>
-                    <text x="1200" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.6s;">11111111</text>
-                    <text x="1350" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 4.8s;">00001111</text>
-                    <text x="1500" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.3s;">10101111</text>
-                    <text x="1650" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4.6s;">01010101</text>
-                    <text x="1800" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 3.9s;">11001010</text>
+                    <text x="150" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 3s;">10101010</text>
+                    <text x="300" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 3.5s;">11110000</text>
+                    <text x="450" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4s;">00110011</text>
+                    <text x="600" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.2s;">10110110</text>
+                    <text x="750" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 4.5s;">11001100</text>
+                    <text x="900" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 3.8s;">01110111</text>
+                    <text x="1050" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 4.2s;">10001000</text>
+                    <text x="1200" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 9s; animation-delay: 3.6s;">11111111</text>
+                    <text x="1350" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 4.8s;">00001111</text>
+                    <text x="1500" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 10s; animation-delay: 3.3s;">10101111</text>
+                    <text x="1650" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 11s; animation-delay: 4.6s;">01010101</text>
+                    <text x="1800" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 12s; animation-delay: 3.9s;">11001010</text>
                     
                     <!-- Third wave for density -->
-                    <text x="100" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.5s;">01101101</text>
-                    <text x="250" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6s;">10010010</text>
-                    <text x="400" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.2s;">11100111</text>
-                    <text x="550" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.5s;">00011000</text>
-                    <text x="700" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.8s;">10111101</text>
-                    <text x="850" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6.3s;">01001010</text>
-                    <text x="1000" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.6s;">11011011</text>
-                    <text x="1150" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.8s;">00100010</text>
-                    <text x="1300" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.3s;">10100101</text>
-                    <text x="1450" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6.1s;">01111110</text>
-                    <text x="1600" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.9s;">11000011</text>
-                    <text x="1750" y="0" fill="#00ff00" font-family="monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.4s;">00111100</text>
+                    <text x="100" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.5s;">01101101</text>
+                    <text x="250" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6s;">10010010</text>
+                    <text x="400" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.2s;">11100111</text>
+                    <text x="550" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.5s;">00011000</text>
+                    <text x="700" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.8s;">10111101</text>
+                    <text x="850" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6.3s;">01001010</text>
+                    <text x="1000" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.6s;">11011011</text>
+                    <text x="1150" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.8s;">00100010</text>
+                    <text x="1300" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 15s; animation-delay: 5.3s;">10100101</text>
+                    <text x="1450" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 14s; animation-delay: 6.1s;">01111110</text>
+                    <text x="1600" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 16s; animation-delay: 5.9s;">11000011</text>
+                    <text x="1750" y="0" fill="#00ff00" font-family="VT323, monospace" font-size="20" class="matrix-char" style="animation-duration: 13s; animation-delay: 6.4s;">00111100</text>
                 </g>
                 
                 <!-- Thank you message -->
-                <text x="960" y="540" text-anchor="middle" fill="#00ff00" font-size="100" font-family="monospace" font-weight="bold">THANK YOU</text>
+                <text x="960" y="540" text-anchor="middle" fill="#00ff00" font-size="100" font-family="VT323, monospace" font-weight="bold">THANK YOU</text>
             </svg>
         </div>
     </div>
@@ -1041,46 +993,44 @@
         
         document.getElementById('total-slides').textContent = totalSlides;
 
-        function showSlide(n, direction = 'next') {
+        function transitionSlides(newSlideNumber, oldSlideNumber) {
             const slides = document.querySelectorAll('.slide');
-            const previousSlideIndex = currentSlide - 1;
-            
-            if (n > totalSlides) currentSlide = 1;
-            if (n < 1) currentSlide = totalSlides;
-            
-            // Apply morph-out animation to current slide
-            if (slides[previousSlideIndex]) {
-                slides[previousSlideIndex].classList.remove('active', 'morphing-in');
-                slides[previousSlideIndex].classList.add('morphing-out');
-                
-                // Remove the slide after animation completes
-                setTimeout(() => {
-                    slides[previousSlideIndex].classList.remove('morphing-out');
-                }, 400);
+            const newSlideIndex = newSlideNumber - 1;
+            const oldSlideIndex = oldSlideNumber - 1;
+
+            if (newSlideIndex === oldSlideIndex) return;
+
+            // Hide old slide
+            if (slides[oldSlideIndex]) {
+                slides[oldSlideIndex].classList.remove('active');
+            }
+
+            // Show new slide
+            if (slides[newSlideIndex]) {
+                slides[newSlideIndex].classList.add('active');
             }
             
-            // Apply morph-in animation to new slide
-            setTimeout(() => {
-                slides[currentSlide - 1].classList.remove('morphing-out');
-                slides[currentSlide - 1].classList.add('active', 'morphing-in');
-                
-                // Clean up animation class after completion
-                setTimeout(() => {
-                    slides[currentSlide - 1].classList.remove('morphing-in');
-                }, 400);
-            }, 200); // Slight delay for smoother transition
-            
-            document.getElementById('current-slide').textContent = currentSlide;
+            document.getElementById('current-slide').textContent = newSlideNumber;
         }
 
         function nextSlide() {
-            currentSlide++;
-            showSlide(currentSlide, 'next');
+            const oldSlide = currentSlide;
+            let newSlide = currentSlide + 1;
+            if (newSlide > totalSlides) {
+                newSlide = 1; // Loop back to the start
+            }
+            currentSlide = newSlide;
+            transitionSlides(currentSlide, oldSlide);
         }
 
         function previousSlide() {
-            currentSlide--;
-            showSlide(currentSlide, 'prev');
+            const oldSlide = currentSlide;
+            let newSlide = currentSlide - 1;
+            if (newSlide < 1) {
+                newSlide = totalSlides; // Loop back to the end
+            }
+            currentSlide = newSlide;
+            transitionSlides(currentSlide, oldSlide);
         }
 
         // Keyboard navigation
