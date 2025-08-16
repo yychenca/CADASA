@@ -68,6 +68,12 @@
             display: flex;
             gap: 20px;
             z-index: 1000;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .presentation-container:hover .navigation {
+            opacity: 1; /* Appear on hover */
         }
 
         button {
@@ -88,18 +94,6 @@
             box-shadow: 0 0 20px #00ff00;
         }
 
-        .slide-number {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: #000;
-            padding: 10px 20px;
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            font-family: 'VT323', monospace;
-            z-index: 1000;
-            font-size: 1.2em;
-        }
     </style>
     <style>
         /* Matrix rain animation for SVG elements */
@@ -117,9 +111,6 @@
 </head>
 <body>
     <div class="presentation-container">
-        <div class="slide-number">
-            <span id="current-slide">1</span> / <span id="total-slides">18</span>
-        </div>
 
         <!-- Slide 1: Title -->
         <div class="slide active">
@@ -986,8 +977,6 @@
         let currentSlide = 1;
         const totalSlides = document.querySelectorAll('.slide').length;
         
-        document.getElementById('total-slides').textContent = totalSlides;
-
         function transitionSlides(newSlideNumber, oldSlideNumber) {
             const slides = document.querySelectorAll('.slide');
             const newSlideIndex = newSlideNumber - 1;
@@ -1004,8 +993,6 @@
             if (slides[newSlideIndex]) {
                 slides[newSlideIndex].classList.add('active');
             }
-            
-            document.getElementById('current-slide').textContent = newSlideNumber;
         }
 
         function nextSlide() {
@@ -1040,7 +1027,6 @@
         // Initialize - show first slide without animation
         const slides = document.querySelectorAll('.slide');
         slides[0].classList.add('active');
-        document.getElementById('current-slide').textContent = currentSlide;
     </script>
 </body>
 </html>
