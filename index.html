@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Training and Fine-tuning SLMs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Matrix Rain Background -->
+        <div class="matrix-rain" id="matrixRain"></div>
+        
+        <!-- Navigation -->
+        <nav class="nav-controls">
+            <button class="nav-btn" id="prevBtn">‹ Previous</button>
+            <span class="slide-counter" id="slideCounter">1 / 20</span>
+            <button class="nav-btn" id="nextBtn">Next ›</button>
+        </nav>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-content title-slide">
+                <h1 class="main-title">LLM Training and Fine-tuning SLMs</h1>
+                <p class="subtitle">From Pattern Recognition to Practical Implementation</p>
+                <p class="author">2-Hour Technical Instruction</p>
+                <div class="matrix-text">Wake up, Neo... The ML revolution has begun</div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Quest for Intelligence -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2>The Quest for Machine Intelligence</h2>
+                <div class="content-grid">
+                    <div class="intelligence-level">
+                        <div class="level-number">01</div>
+                        <h3>Pattern Recognition</h3>
+                        <p>Identify shapes, faces, objects</p>
+                    </div>
+                    <div class="intelligence-level">
+                        <div class="level-number">02</div>
+                        <h3>Language Understanding</h3>
+                        <p>Comprehend meaning and context</p>
+                        <div class="highlight">← The Key Insight</div>
+                    </div>
+                    <div class="intelligence-level">
+                        <div class="level-number">03</div>
+                        <h3>Reasoning & Planning</h3>
+                        <p>Multi-step problem solving</p>
+                    </div>
+                </div>
+                <div class="insight-box">
+                    <p>💡 Language became the universal interface to intelligence</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Why Language -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2>Why Language?</h2>
+                <div class="language-concept">
+                    <div class="concept-header">
+                        <h3>Language = Operating System of Intelligence</h3>
+                    </div>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <div class="icon">🧠</div>
+                            <h4>Compressed Knowledge</h4>
+                            <p>Centuries of human thought encoded in text</p>
+                        </div>
+                        <div class="concept-item">
+                            <div class="icon">🔗</div>
+                            <h4>Universal Interface</h4>
+                            <p>Natural bridge between human and machine thinking</p>
+                        </div>
+                        <div class="concept-item">
+                            <div class="icon">⚡</div>
+                            <h4>Emergent Capabilities</h4>
+                            <p>Language unlocks reasoning, planning, and creativity</p>
+                        </div>
+                    </div>
+                    <div class="code-example">
+                        <code>Human: "Solve this step by step"<br>AI: *Unlocks multi-step reasoning*</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Bayesian Models -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2>Language Models are Bayesians</h2>
+                <div class="bayesian-concept">
+                    <div class="formula">
+                        <h3>P(next_word | context)</h3>
+                        <p>The fundamental equation of language modeling</p>
+                    </div>
+                    <div class="example-grid">
+                        <div class="example">
+                            <h4>Context: "The capital of France is..."</h4>
+                            <div class="predictions">
+                                <div class="prediction high">Paris <span>95%</span></div>
+                                <div class="prediction low">London <span>2%</span></div>
+                                <div class="prediction low">Berlin <span>1%</span></div>
+                                <div class="prediction low">Other <span>2%</span></div>
+                            </div>
+                        </div>
+                        <div class="ambiguity-example">
+                            <h4>Handling Ambiguity</h4>
+                            <p>"Bank" → Financial institution or River edge?</p>
+                            <p>Context determines probability distribution</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: AI Architecture Evolution -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2>The Evolution of AI Architectures</h2>
+                <div class="architecture-comparison">
+                    <div class="architecture rnn">
+                        <h3>RNN Era (2010-2017)</h3>
+                        <div class="arch-visual">
+                            <div class="sequence">h₁ → h₂ → h₃ → h₄</div>
+                        </div>
+                        <ul>
+                            <li>Sequential processing</li>
+                            <li>Vanishing gradient problem</li>
+                            <li>Limited context window</li>
+                        </ul>
+                    </div>
+                    <div class="vs-divider">VS</div>
+                    <div class="architecture transformer">
+                        <h3>Transformer Era (2017+)</h3>
+                        <div class="arch-visual">
+                            <div class="attention-grid">
+                                <div class="attention-head">Q</div>
+                                <div class="attention-head">K</div>
+                                <div class="attention-head">V</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Parallel processing</li>
+                            <li>Attention mechanism</li>
+                            <li>Unlimited context (theoretically)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="revolution-note">
+                    <p>🚀 "Attention Is All You Need" - The paper that changed everything</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Paradigm Wave 1 -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2>New Paradigm Wave 1: From Supervised to Self-Supervised Learning</h2>
+                <div class="paradigm-comparison">
+                    <div class="paradigm traditional">
+                        <h3>Traditional Supervised Learning</h3>
+                        <div class="example-box">
+                            <h4>ImageNet Example</h4>
+                            <ul>
+                                <li>1M manually labeled images</li>
+                                <li>$50M+ crowdsourcing cost</li>
+                                <li>Years of human effort</li>
+                                <li>Domain-specific datasets</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="paradigm modern">
+                        <h3>Self-Supervised Revolution</h3>
+                        <div class="example-box">
+                            <h4>BERT & GPT Approach</h4>
+                            <ul>
+                                <li>Learn from raw text</li>
+                                <li>No manual labeling needed</li>
+                                <li>Internet-scale data</li>
+                                <li>Universal representations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="impact-box">
+                    <h3>💥 Impact: Democratized AI Development</h3>
+                    <p>From $50M datasets to free internet text</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Scaling Revolution -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2>The Scaling Revolution</h2>
+                <div class="scaling-timeline">
+                    <div class="model-evolution">
+                        <div class="model-point gpt1">
+                            <h3>GPT-1</h3>
+                            <p>117M parameters</p>
+                            <p>2018</p>
+                        </div>
+                        <div class="model-point gpt2">
+                            <h3>GPT-2</h3>
+                            <p>1.5B parameters</p>
+                            <p>2019</p>
+                        </div>
+                        <div class="model-point gpt3">
+                            <h3>GPT-3</h3>
+                            <p>175B parameters</p>
+                            <p>2020</p>
+                        </div>
+                        <div class="model-point gpt4">
+                            <h3>GPT-4</h3>
+                            <p>~1.8T parameters</p>
+                            <p>2023</p>
+                        </div>
+                    </div>
+                    <div class="scaling-laws">
+                        <h3>Scaling Laws</h3>
+                        <ul>
+                            <li>Loss ∝ N^(-α) (Model size)</li>
+                            <li>Loss ∝ D^(-β) (Data size)</li>
+                            <li>Loss ∝ C^(-γ) (Compute)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Emergent Abilities -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2>Emergent Abilities</h2>
+                <div class="emergence-concept">
+                    <div class="threshold-chart">
+                        <div class="axis-label">Capability</div>
+                        <div class="curve">
+                            <div class="point small">Small Models</div>
+                            <div class="point medium">Medium Models</div>
+                            <div class="point large">Large Models</div>
+                            <div class="emergence-line"></div>
+                        </div>
+                        <div class="axis-label">Model Size →</div>
+                    </div>
+                    <div class="abilities-grid">
+                        <div class="ability">
+                            <h4>🧮 Mathematical Reasoning</h4>
+                            <p>Chain-of-thought problem solving</p>
+                        </div>
+                        <div class="ability">
+                            <h4>💻 Code Generation</h4>
+                            <p>Writing functional programs</p>
+                        </div>
+                        <div class="ability">
+                            <h4>🎯 Few-Shot Learning</h4>
+                            <p>Learning from examples</p>
+                        </div>
+                        <div class="ability">
+                            <h4>🌍 Multi-lingual Understanding</h4>
+                            <p>Cross-language capabilities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Code Connection -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content">
+                <h2>The Code Connection</h2>
+                <div class="code-insight">
+                    <div class="discovery">
+                        <h3>🔍 The Discovery</h3>
+                        <p>Training on code dramatically improved reasoning abilities</p>
+                    </div>
+                    <div class="why-code">
+                        <h3>Why Code Unlocked Reasoning</h3>
+                        <div class="code-properties">
+                            <div class="property">
+                                <h4>Logical Structure</h4>
+                                <p>If-then-else patterns mirror reasoning</p>
+                            </div>
+                            <div class="property">
+                                <h4>Step-by-Step Process</h4>
+                                <p>Functions break down complex problems</p>
+                            </div>
+                            <div class="property">
+                                <h4>Precise Syntax</h4>
+                                <p>Exact formatting teaches attention to detail</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>def solve_problem(input):
+    # Step 1: Analyze the problem
+    analysis = analyze(input)
+    
+    # Step 2: Break into sub-problems  
+    subproblems = decompose(analysis)
+    
+    # Step 3: Solve each part
+    solutions = [solve(sp) for sp in subproblems]
+    
+    # Step 4: Combine results
+    return combine(solutions)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Hallucination Challenge -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2>The Hallucination Challenge</h2>
+                <div class="hallucination-example">
+                    <div class="example-box error">
+                        <h3>Classic Hallucination</h3>
+                        <p><strong>Human:</strong> "When did Columbus discover electricity?"</p>
+                        <p><strong>AI:</strong> "Columbus discovered electricity in 1492 when his ship's metal parts were struck by lightning during his voyage to the Americas..."</p>
+                        <div class="error-label">❌ Confidently wrong</div>
+                    </div>
+                    
+                    <div class="solutions">
+                        <h3>Solutions Emerged</h3>
+                        <div class="solution-grid">
+                            <div class="solution">
+                                <h4>🎯 RLHF</h4>
+                                <p>Reinforcement Learning from Human Feedback</p>
+                            </div>
+                            <div class="solution">
+                                <h4>🔍 RAG</h4>
+                                <p>Retrieval Augmented Generation</p>
+                            </div>
+                            <div class="solution">
+                                <h4>🧮 Tool Use</h4>
+                                <p>Integration with external systems</p>
+                            </div>
+                            <div class="solution">
+                                <h4>⚡ Constitutional AI</h4>
+                                <p>Self-correction mechanisms</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Paradigm Wave 2 -->
+        <div class="slide" data-slide="11">
+            <div class="slide-content">
+                <h2>New Paradigm Wave 2: The ChatGPT Revolution</h2>
+                <div class="pipeline-flow">
+                    <div class="pipeline-step">
+                        <div class="step-box">
+                            <h3>Base Model</h3>
+                            <p>Pre-trained on internet text</p>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="pipeline-step">
+                        <div class="step-box">
+                            <h3>SFT</h3>
+                            <p>Supervised Fine-Tuning<br>Human demonstrations</p>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="pipeline-step">
+                        <div class="step-box">
+                            <h3>RLHF</h3>
+                            <p>Reinforcement Learning<br>Human preferences</p>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="pipeline-step">
+                        <div class="step-box">
+                            <h3>GRPO</h3>
+                            <p>Generative Reward<br>Process Optimization</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <h3>🎯 Result: Helpful, Harmless, Honest AI Assistants</h3>
+                    <p>From text completion to conversational AI</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Deep Reasoning -->
+        <div class="slide" data-slide="12">
+            <div class="slide-content">
+                <h2>Unlocking Deep Reasoning</h2>
+                <div class="magic-phrases">
+                    <h3>The "Magic" Phrases That Changed Everything</h3>
+                    <div class="phrase-grid">
+                        <div class="phrase">
+                            <div class="phrase-text">"Think step by step"</div>
+                            <div class="improvement">+30% accuracy boost</div>
+                        </div>
+                        <div class="phrase">
+                            <div class="phrase-text">"Let's work through this carefully"</div>
+                            <div class="improvement">Activates reasoning mode</div>
+                        </div>
+                        <div class="phrase">
+                            <div class="phrase-text">"Show your work"</div>
+                            <div class="improvement">Makes process visible</div>
+                        </div>
+                    </div>
+                    <div class="reasoning-example">
+                        <h4>Example: Math Problem</h4>
+                        <div class="comparison">
+                            <div class="before">
+                                <h5>Without Chain-of-Thought:</h5>
+                                <p>"What is 23 × 47?"</p>
+                                <p class="answer error">"1,081" ❌</p>
+                            </div>
+                            <div class="after">
+                                <h5>With Chain-of-Thought:</h5>
+                                <p>"Let me solve 23 × 47 step by step..."</p>
+                                <p class="steps">23 × 47 = 23 × (40 + 7) = 920 + 161 = 1,081</p>
+                                <p class="answer correct">"1,081" ✅</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Teaching Models to Think -->
+        <div class="slide" data-slide="13">
+            <div class="slide-content">
+                <h2>Teaching Models to Think</h2>
+                <div class="thinking-process">
+                    <div class="key-insight">
+                        <h3>💡 Key Insight: Reward the Process, Not Just the Answer</h3>
+                    </div>
+                    <div class="process-comparison">
+                        <div class="traditional">
+                            <h4>Traditional Training</h4>
+                            <div class="process-flow">
+                                <span class="hidden-process">🤔 Hidden Thinking</span>
+                                <span class="arrow">→</span>
+                                <span class="final-answer">📝 Final Answer</span>
+                                <span class="arrow">→</span>
+                                <span class="reward">✅ Reward/Penalty</span>
+                            </div>
+                            <p class="limitation">Problem: Can't see reasoning errors</p>
+                        </div>
+                        <div class="improved">
+                            <h4>Process Supervision</h4>
+                            <div class="process-flow">
+                                <span class="visible-step">Step 1 ✅</span>
+                                <span class="arrow">→</span>
+                                <span class="visible-step">Step 2 ✅</span>
+                                <span class="arrow">→</span>
+                                <span class="visible-step">Step 3 ❌</span>
+                                <span class="arrow">→</span>
+                                <span class="correction">🔧 Correct</span>
+                            </div>
+                            <p class="benefit">Benefit: Catch and fix reasoning errors early</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: GRPO -->
+        <div class="slide" data-slide="14">
+            <div class="slide-content">
+                <h2>GRPO: Generative Reward Process Optimization</h2>
+                <div class="grpo-concept">
+                    <div class="what-is-grpo">
+                        <h3>What is GRPO?</h3>
+                        <p>Advanced technique that optimizes the reasoning process by generating multiple solution paths and learning from self-evaluation.</p>
+                    </div>
+                    <div class="how-it-works">
+                        <h3>How It Works</h3>
+                        <div class="grpo-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <h4>Generate Multiple Paths</h4>
+                                <p>Model creates several different solution approaches</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <h4>Self-Evaluate</h4>
+                                <p>Model scores its own reasoning steps</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <h4>Optimize Process</h4>
+                                <p>Learn from best reasoning patterns</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="benefits">
+                        <h3>🎯 Benefits</h3>
+                        <ul>
+                            <li>Improved mathematical reasoning</li>
+                            <li>Better problem-solving consistency</li>
+                            <li>Self-correction capabilities</li>
+                            <li>Reduced hallucination in complex tasks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Finetuning SLMs Introduction -->
+        <div class="slide" data-slide="15">
+            <div class="slide-content">
+                <h2>Finetuning SLMs: The Practical Approach</h2>
+                <div class="slm-intro">
+                    <div class="why-slms">
+                        <h3>🎯 Why SLMs Matter</h3>
+                        <div class="reasons-grid">
+                            <div class="reason">
+                                <div class="icon">💰</div>
+                                <h4>Cost Efficiency</h4>
+                                <p>10-100x cheaper to train and deploy</p>
+                            </div>
+                            <div class="reason">
+                                <div class="icon">⚡</div>
+                                <h4>Speed</h4>
+                                <p>Faster inference for real-time applications</p>
+                            </div>
+                            <div class="reason">
+                                <div class="icon">🎛️</div>
+                                <h4>Customization</h4>
+                                <p>Easier to adapt for specific domains</p>
+                            </div>
+                            <div class="reason">
+                                <div class="icon">🔐</div>
+                                <h4>Privacy</h4>
+                                <p>Can run on-premises or edge devices</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="finetuning-advantage">
+                        <h3>🚀 The Fine-tuning Advantage</h3>
+                        <div class="advantage-comparison">
+                            <div class="before">
+                                <h4>Generic Model</h4>
+                                <p>Good at everything, expert at nothing</p>
+                            </div>
+                            <div class="after">
+                                <h4>Fine-tuned Model</h4>
+                                <p>Specialized expert for your specific use case</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: SLMs Sweet Spot -->
+        <div class="slide" data-slide="16">
+            <div class="slide-content">
+                <h2>Small Language Models: The Sweet Spot for Custom AI</h2>
+                <div class="sweet-spot-content">
+                    <div class="performance-chart">
+                        <h3>📊 Performance vs Size Trade-off</h3>
+                        <div class="chart-visual">
+                            <div class="axis">
+                                <div class="y-axis">Performance</div>
+                                <div class="chart-area">
+                                    <div class="model-point slm">
+                                        <div class="point"></div>
+                                        <span>SLMs<br>Sweet Spot</span>
+                                    </div>
+                                    <div class="model-point llm">
+                                        <div class="point"></div>
+                                        <span>LLMs<br>Diminishing Returns</span>
+                                    </div>
+                                </div>
+                                <div class="x-axis">Model Size & Cost →</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="advantages">
+                        <h3>🎯 Four Key Advantages</h3>
+                        <div class="advantages-grid">
+                            <div class="advantage">
+                                <div class="icon">💰</div>
+                                <h4>Cost-Effective</h4>
+                                <p>Training: $1k vs $10M+<br>Inference: $0.001 vs $0.1+ per query</p>
+                            </div>
+                            <div class="advantage">
+                                <div class="icon">⚡</div>
+                                <h4>Fast Deployment</h4>
+                                <p>Hours to fine-tune vs months<br>Real-time inference capability</p>
+                            </div>
+                            <div class="advantage">
+                                <div class="icon">🔐</div>
+                                <h4>Privacy Control</h4>
+                                <p>On-premises deployment<br>No data leaves your environment</p>
+                            </div>
+                            <div class="advantage">
+                                <div class="icon">🎯</div>
+                                <h4>Domain Expertise</h4>
+                                <p>Specialized performance<br>Often matches larger models</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Decision Framework -->
+        <div class="slide" data-slide="17">
+            <div class="slide-content">
+                <h2>When to Choose SLMs: Technical Decision Framework</h2>
+                <div class="decision-framework">
+                    <div class="criteria-grid">
+                        <div class="criterion">
+                            <div class="criterion-header">
+                                <div class="icon">🎯</div>
+                                <h3>Task Specificity</h3>
+                            </div>
+                            <div class="details">
+                                <strong>Choose SLMs when:</strong>
+                                <p>Narrow, well-defined domain (e.g., phishing detection, code review, medical diagnosis)</p>
+                            </div>
+                        </div>
+                        <div class="criterion">
+                            <div class="criterion-header">
+                                <div class="icon">⚡</div>
+                                <h3>Latency Requirements</h3>
+                            </div>
+                            <div class="details">
+                                <strong>Choose SLMs when:</strong>
+                                <p>Real-time inference needed (&lt;100ms response time)</p>
+                            </div>
+                        </div>
+                        <div class="criterion">
+                            <div class="criterion-header">
+                                <div class="icon">💰</div>
+                                <h3>Budget Constraints</h3>
+                            </div>
+                            <div class="details">
+                                <strong>Choose SLMs when:</strong>
+                                <p>Limited training budget (&lt;$10k) or high-volume inference needs</p>
+                            </div>
+                        </div>
+                        <div class="criterion">
+                            <div class="criterion-header">
+                                <div class="icon">🔐</div>
+                                <h3>Data Privacy</h3>
+                            </div>
+                            <div class="details">
+                                <strong>Choose SLMs when:</strong>
+                                <p>Sensitive data that cannot leave your infrastructure</p>
+                            </div>
+                        </div>
+                        <div class="criterion">
+                            <div class="criterion-header">
+                                <div class="icon">📊</div>
+                                <h3>Data Availability</h3>
+                            </div>
+                            <div class="details">
+                                <strong>Choose SLMs when:</strong>
+                                <p>You have quality domain-specific training data (1k+ examples)</p>
+                            </div>
+                        </div>
+                        <div class="criterion">
+                            <div class="criterion-header">
+                                <div class="icon">🏗️</div>
+                                <h3>Infrastructure</h3>
+                            </div>
+                            <div class="details">
+                                <strong>Choose SLMs when:</strong>
+                                <p>Edge deployment or limited computational resources</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Fine-tuning Techniques -->
+        <div class="slide" data-slide="18">
+            <div class="slide-content">
+                <h2>Fine-tuning Techniques Overview</h2>
+                <div class="techniques-pyramid">
+                    <div class="pyramid-level level-3">
+                        <h3>🧠 Reasoning Fine-tuning</h3>
+                        <div class="techniques">
+                            <span class="technique">Chain-of-Thought</span>
+                            <span class="technique">Process Supervision</span>
+                            <span class="technique">Self-Consistency</span>
+                        </div>
+                        <p>Teaching models to think step-by-step</p>
+                    </div>
+                    <div class="pyramid-level level-2">
+                        <h3>🎯 Alignment Fine-tuning</h3>
+                        <div class="techniques">
+                            <span class="technique">RLHF</span>
+                            <span class="technique">Constitutional AI</span>
+                            <span class="technique">DPO</span>
+                        </div>
+                        <p>Aligning with human values and preferences</p>
+                    </div>
+                    <div class="pyramid-level level-1">
+                        <h3>📚 Supervised Fine-tuning (SFT)</h3>
+                        <div class="techniques">
+                            <span class="technique">Full Fine-tuning</span>
+                            <span class="technique">LoRA</span>
+                            <span class="technique">QLoRA</span>
+                        </div>
+                        <p>Learning from input-output examples</p>
+                    </div>
+                </div>
+                <div class="parameter-efficient">
+                    <h3>💡 Parameter-Efficient Methods</h3>
+                    <div class="efficiency-comparison">
+                        <div class="method">
+                            <h4>LoRA (Low-Rank Adaptation)</h4>
+                            <p>Train only 0.1% of parameters, 99% performance retention</p>
+                        </div>
+                        <div class="method">
+                            <h4>QLoRA (Quantized LoRA)</h4>
+                            <p>4-bit quantization + LoRA = 75% memory reduction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: Model Distillation -->
+        <div class="slide" data-slide="19">
+            <div class="slide-content">
+                <h2>Model Distillation: A Practical Approach</h2>
+                <div class="distillation-concept">
+                    <div class="teacher-student">
+                        <div class="teacher">
+                            <div class="model-icon large">🧠</div>
+                            <h3>Teacher Model</h3>
+                            <p>Large, powerful model<br>(GPT-4, Claude, etc.)</p>
+                            <ul>
+                                <li>High accuracy</li>
+                                <li>Expensive inference</li>
+                                <li>Slow response</li>
+                            </ul>
+                        </div>
+                        <div class="knowledge-transfer">
+                            <div class="transfer-arrow">📚<br>Knowledge<br>Transfer</div>
+                        </div>
+                        <div class="student">
+                            <div class="model-icon small">🧠</div>
+                            <h3>Student Model</h3>
+                            <p>Smaller, efficient model<br>(Phi-4, Llama-3.2, etc.)</p>
+                            <ul>
+                                <li>90%+ teacher accuracy</li>
+                                <li>10x faster inference</li>
+                                <li>10x cheaper costs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cot-distillation">
+                        <h3>🔗 Chain-of-Thought Distillation</h3>
+                        <div class="process-flow">
+                            <div class="step">Teacher generates reasoning steps</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Student learns to mimic reasoning</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Student can reason independently</div>
+                        </div>
+                    </div>
+                    <div class="advantages-list">
+                        <h3>✅ Distillation Advantages</h3>
+                        <ul>
+                            <li>Preserves reasoning capabilities in smaller models</li>
+                            <li>Reduces deployment costs significantly</li>
+                            <li>Enables edge deployment scenarios</li>
+                            <li>Maintains domain-specific expertise</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Demo Phi-4 -->
+        <div class="slide" data-slide="20">
+            <div class="slide-content">
+                <h2>Demo: Fine-tuning Phi-4 for Phishing Detection</h2>
+                <div class="demo-content">
+                    <div class="dataset-info">
+                        <h3>📊 Dataset</h3>
+                        <p><strong>Phishing Email Detection Dataset</strong></p>
+                        <ul>
+                            <li>10,000 labeled emails (5k phishing, 5k legitimate)</li>
+                            <li>Real-world examples from security vendors</li>
+                            <li>Balanced across different phishing types</li>
+                        </ul>
+                    </div>
+                    <div class="approaches">
+                        <h3>🔬 Two Approaches Compared</h3>
+                        <div class="approach-comparison">
+                            <div class="approach">
+                                <h4>Approach 1: Zero-Shot GPT-4</h4>
+                                <p>Direct classification without training</p>
+                            </div>
+                            <div class="approach">
+                                <h4>Approach 2: Fine-tuned Phi-4</h4>
+                                <p>Specialized training on phishing data</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results">
+                        <h3>📈 Results</h3>
+                        <div class="results-table">
+                            <div class="table-header">
+                                <span>Model</span>
+                                <span>Precision</span>
+                                <span>Recall</span>
+                                <span>F1-Score</span>
+                                <span>Cost/1k queries</span>
+                            </div>
+                            <div class="table-row">
+                                <span>GPT-4 (Zero-shot)</span>
+                                <span>0.78</span>
+                                <span>0.72</span>
+                                <span>0.75</span>
+                                <span>$30</span>
+                            </div>
+                            <div class="table-row winner">
+                                <span>Phi-4 (Fine-tuned)</span>
+                                <span>0.94</span>
+                                <span>0.91</span>
+                                <span>0.92</span>
+                                <span>$0.50</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="azure-workflow">
+                        <h3>🚀 Azure AI Foundry Workflow</h3>
+                        <div class="workflow-steps">
+                            <div class="step">Upload Data</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Configure Training</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Fine-tune Model</div>
+                            <div class="arrow">→</div>
+                            <div class="step">Deploy Endpoint</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
