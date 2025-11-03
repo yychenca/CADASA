@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<!-- 
+  lang="zh-CN" 设置页面语言为简体中文
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 标题已翻译 -->
+    <title>AI 精英训练营 - 课程介绍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 
+      添加了 'Noto Sans SC' 字体以更好地支持中文。
+      Inter 仍然作为英文字符的备选。
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0079FF',
+                        secondary: '#5EEAD4',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        /* 将 'Noto Sans SC' (思源黑体) 添加到字体栈
+                          以确保中文字符正确显示和美观。
+                        */
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #0079FF 0%, #5EEAD4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0c4a6e 100%);
+        }
+        .stats-card {
+            background: linear-gradient(135deg, rgba(94, 234, 212, 0.1) 0%, rgba(0, 121, 255, 0.1) 100%);
+            border: 1px solid rgba(94, 234, 212, 0.3);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 演示文稿特定样式
+        */
+        
+        /* 幻灯片轨道：一个横向 flex 容器 */
+        #slide-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+
+        /* 幻灯片基础样式:
+          - 'w-full', 'h-full': 占据父容器 (16:9 舞台) 的全部空间
+          - 'flex-shrink-0': 确保幻灯片不会缩小
+          - 'relative': 用于定位幻灯片内的元素 (如页码)
+          - 'p-8 md:p-16': 为幻灯片内容添加内边距
+          - 'flex flex-col': 默认使用 flex 纵向布局
+        */
+        .slide {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            position: relative;
+            padding: 2rem 4rem; /* 32px 64px */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 默认垂直居中 */
+            align-items: center; /* 默认水平居中 */
+            overflow: hidden; /* 裁剪溢出的内容 */
+        }
+    </style>
+</head>
+<!-- 
+  修改了 <body> 样式:
+  - 'bg-slate-900': 为 16:9 容器外的 "信箱" (letterbox) 区域设置深色背景
+  - 'flex justify-center items-center min-h-screen': 使 16:9 容器在屏幕上居中
+  - 'p-4 md:p-8': 在容器周围添加一些间距，使其看起来更精致
+-->
+<body class="font-sans antialiased bg-slate-900 flex justify-center items-center min-h-screen p-4 md:p-8 overflow-hidden">
+
+    <!-- 
+      16:9 纵横比 "舞台" 容器:
+      - 'w-full h-full': 在移动设备上占满可用空间。
+      - 'md:max-w-[160vh] md:aspect-[16/9]': 在中等及以上屏幕上，强制 16:9 的比例。
+      - 'bg-light': 幻灯片的默认背景色。
+      - 'shadow-2xl rounded-lg': 添加阴影和圆角效果。
+      - 'overflow-hidden': **重要** 隐藏所有幻灯片，只显示当前一张
+      - 'relative': 使内部的导航按钮和页码可以相对于此容器定位。
+    -->
+    <div id="presentation-stage" class="w-full h-full max-w-full md:max-w-[160vh] md:aspect-[16/9] bg-light shadow-2xl overflow-hidden relative rounded-lg">
+        
+        <!-- 
+          幻灯片轨道:
+          - 宽度将由 JS 设置为 (幻灯片数量 * 100%)
+        -->
+        <div id="slide-track">
+
+            <!-- 幻灯片 1: 标题页 -->
+            <div class="slide hero-gradient text-white text-center">
+                <div class="relative z-10">
+                    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                        为您的孩子准备<br/>
+                        <span class="gradient-text">AI 驱动的未来</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                        年轻的头脑构建明日的科技
+                    </p>
+                    <div class="mt-12 flex flex-wrap justify-center gap-6 text-lg">
+                        <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-lg">
+                            <span>年龄 12-18</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-lg">
+                            <span>无需经验</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-lg">
+                            <span>作品集项目</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 2: 核心数据 -->
+            <div class="slide bg-white text-center">
+                <h2 class="text-4xl md:text-5xl font-black text-dark mb-12">
+                    为何选择 <span class="gradient-text">AI 精英训练营?</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-16">
+                    在一个被 AI 变革的世界里，您的孩子可以不仅仅是用户——他们可以成为创造者、创新者和领导者。
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-5xl">
+                    <div class="stats-card text-dark p-6 rounded-xl text-center backdrop-blur border-secondary/50">
+                        <div class="text-5xl font-black text-primary mb-2">20</div>
+                        <div class="text-lg text-gray-700">周总长</div>
+                    </div>
+                    <div class="stats-card text-dark p-6 rounded-xl text-center backdrop-blur border-secondary/50">
+                        <div class="text-5xl font-black text-primary mb-2">7+</div>
+                        <div class="text-lg text-gray-700">作品集项目</div>
+                    </div>
+                    <div class="stats-card text-dark p-6 rounded-xl text-center backdrop-blur border-secondary/50">
+                        <div class="text-5xl font-black text-primary mb-2">12</div>
+                        <div class="text-lg text-gray-700">人/期 (最多)</div>
+                    </div>
+                    <div class="stats-card text-dark p-6 rounded-xl text-center backdrop-blur border-secondary/50">
+                        <div class="text-5xl font-black text-primary mb-2">94%</div>
+                        <div class="text-lg text-gray-700">课程完成率</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 3: 核心价值 -->
+            <div class="slide bg-white justify-around">
+                <h2 class="text-4xl md:text-5xl font-black text-dark mb-12 text-center absolute top-16">
+                    我们的<span class="gradient-text">核心价值</span>
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8 w-full max-w-6xl">
+                    <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100 shadow-lg">
+                        <h3 class="text-2xl font-bold text-dark mb-3">项目制学习</h3>
+                        <p class="text-gray-600 text-lg">构建真实 AI 应用，不只是看教程。每节课都创造出实实在在的东西。</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-teal-50 to-white p-8 rounded-2xl border border-teal-100 shadow-lg">
+                        <h3 class="text-2xl font-bold text-dark mb-3">专家指导</h3>
+                        <p class="text-gray-600 text-lg">课程由微软人工智能专家打造。向拥有丰富教学热情的行业实践者学习，而不仅仅是理论。</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl border border-purple-100 shadow-lg">
+                        <h3 class="text-2xl font-bold text-dark mb-3">专业工具</h3>
+                        <p class="text-gray-600 text-lg">使用 Google Gemini, OpenAI, GitHub——与当今顶级公司相同的技术。</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border border-orange-100 shadow-lg">
+                        <h3 class="text-2xl font-bold text-dark mb-3">完整路径</h3>
+                        <p class="text-gray-600 text-lg">从 Python 基础到自主 AI 智能体，一个全面的训练营涵盖所有内容。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 4: 学习之旅 -->
+            <div class="slide bg-gradient-to-br from-slate-50 to-blue-50 text-center">
+                <h2 class="text-4xl md:text-5xl font-black text-dark mb-4">
+                    您孩子的<span class="gradient-text">学习之旅</span>
+                </h2>
+                <p class="text-3xl text-gray-600">3 个渐进式课程</p>
+                <p class="text-6xl font-black text-dark mt-16">
+                    基础 → <span class="text-primary">精通</span> → <span class="text-secondary">毕业项目</span>
+                </p>
+            </div>
+
+            <!-- 幻灯片 5: 课程 1 -->
+            <div class="slide bg-gradient-to-br from-slate-50 to-blue-50">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-primary/20 w-full max-w-6xl">
+                    <div class="bg-gradient-to-r from-primary to-blue-600 text-white p-8">
+                        <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold">8 周</span>
+                        <h3 class="text-4xl font-black mt-4 mb-2">课程 1: Python 基础与 AI 编程</h3>
+                        <p class="text-blue-100 text-xl">使用尖端 AI 工具掌握编程基础</p>
+                    </div>
+                    <div class="p-8 grid grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-dark text-xl mb-3">他们将学到什么</h4>
+                            <ul class="space-y-2 text-gray-600 text-lg">
+                                <li>• Python 编程基础</li>
+                                <li>• 数据结构与算法</li>
+                                <li>• API 集成</li>
+                                <li>• GitHub 版本控制</li>
+                                <li>• AI 辅助编码</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark text-xl mb-3">交付成果</h4>
+                            <div class="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-xl border border-blue-100">
+                                <p class="text-gray-700 text-lg font-medium">功能齐全的 Python 应用程序和 GitHub 作品集</p>
+                            </div>
+                            <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r-xl mt-4">
+                                <p class="text-sm text-gray-700"><strong>秘密武器:</strong> 学生使用 AI 结对编程，学习速度提高 5 倍。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 幻灯片 6: 课程 2 -->
+            <div class="slide bg-gradient-to-br from-slate-50 to-blue-50">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-purple-400/20 w-full max-w-6xl">
+                    <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-8">
+                        <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold">8 周</span>
+                        <h3 class="text-4xl font-black mt-4 mb-2">课程 2: 生成式 AI 精通</h3>
+                        <p class="text-purple-100 text-xl">从零开始构建复杂的人工智能应用程序</p>
+                    </div>
+                    <div class="p-8">
+                        <!-- Session Grid -->
+                        <div class="grid grid-cols-2 gap-6">
+                            <!-- Session 1 -->
+                            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-2xl border border-purple-200">
+                                <h4 class="font-bold text-dark text-xl">1. 提示工程 (Prompt Engineering)</h4>
+                                <p class="text-gray-600 mb-3">学习像专业人士一样与 AI 沟通</p>
+                                <div class="bg-white p-3 rounded-lg text-sm">
+                                    <strong>项目:</strong> 专家解说机器人
+                                </div>
+                            </div>
+                            <!-- Session 2 -->
+                            <div class="bg-gradient-to-br from-teal-50 to-blue-50 p-6 rounded-2xl border border-teal-200">
+                                <h4 class="font-bold text-dark text-xl">2. RAG - 知识系统</h4>
+                                <p class="text-gray-600 mb-3">为私人文档创建类似 ChatGPT 的应用</p>
+                                <div class="bg-white p-3 rounded-lg text-sm">
+                                    <strong>项目:</strong> AI 学习伙伴
+                                </div>
+                            </div>
+                            <!-- Session 3 -->
+                            <div class="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-2xl border border-orange-200">
+                                <h4 class="font-bold text-dark text-xl">3. AI 智能体 - 自主系统</h4>
+                                <p class="text-gray-600 mb-3">构建能够思考、计划和行动的 AI</p>
+                                <div class="bg-white p-3 rounded-lg text-sm">
+                                    <strong>项目:</strong> 自主研究智能体
+                                </div>
+                            </div>
+                            <!-- Session 4 -->
+                            <div class="bg-gradient-to-br from-pink-50 to-purple-50 p-6 rounded-2xl border border-pink-200">
+                                <h4 class="font-bold text-dark text-xl">4. AI 模型微调</h4>
+                                <p class="text-gray-600 mb-3">为特定任务定制 AI</p>
+                                <div class="bg-white p-3 rounded-lg text-sm">
+                                    <strong>项目:</strong> 专用定制 AI 模型
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 7: 课程 3 -->
+             <div class="slide bg-gradient-to-br from-slate-50 to-blue-50">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-indigo-400/20 w-full max-w-6xl">
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8">
+                        <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold">4 周</span>
+                        <h3 class="text-4xl font-black mt-4 mb-2">课程 3: 毕业项目</h3>
+                        <p class="text-indigo-100 text-xl">打造您的标志性作品集</p>
+                    </div>
+                    <div class="p-8 grid grid-cols-2 gap-8 items-center">
+                        <p class="text-gray-600 text-lg">在最后 4 周，学生将选择一个雄心勃勃的毕业项目，展示他们所学到的一切。这些是展示真实世界 AI 技能的复杂应用程序。</p>
+
+                        <div class="bg-indigo-50 border-l-4 border-indigo-600 p-6 rounded-r-xl">
+                            <h4 class="font-bold text-dark text-xl mb-3">项目特色</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>多智能体工作流:</strong> 构建协作式 AI 系统</li>
+                                <li>• <strong>生产就绪的代码:</strong> 部署真实的应用</li>
+                                <li>• <strong>作品集核心:</strong> 令人印象深刻的项目</li>
+                                <li>• <strong>个人指导:</strong> 每周 1 对 1 指导</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 幻灯片 8: 毕业项目选项 -->
+            <div class="slide bg-white">
+                <h2 class="text-4xl md:text-5xl font-black text-dark mb-12 text-center absolute top-16">
+                    <span class="gradient-text">毕业项目</span> 选项
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8 w-full max-w-6xl">
+                    <!-- Project 1 -->
+                    <div class="bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-3xl shadow-2xl border-2 border-blue-200 p-8">
+                        <h3 class="text-3xl font-black text-dark mb-3">AI 故事家</h3>
+                        <p class="text-lg text-gray-600 mb-6">构建一个能创作多页数字故事书的智能体，具有一致的角色和情节。</p>
+                        <h4 class="font-bold text-dark mb-3">技能培养:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">图像生成</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">叙事设计</span>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">创意 AI 控制</span>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="bg-gradient-to-br from-teal-50 via-white to-green-50 rounded-3xl shadow-2xl border-2 border-teal-200 p-8">
+                        <h3 class="text-3xl font-black text-dark mb-3">AI 概念解说器</h3>
+                        <p class="text-lg text-gray-600 mb-6">构建一个基于 RAG 的教学智能体，能研究主题、综合信息并进行教学。</p>
+                        <h4 class="font-bold text-dark mb-3">技能培养:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">网页抓取</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">研究自动化</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">基于事实的生成</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 9: 学习成果 -->
+            <div class="slide bg-gradient-to-br from-slate-900 to-blue-900 text-white">
+                <h2 class="text-4xl md:text-5xl font-black mb-12 text-center absolute top-16">
+                    您的孩子将<span class="text-secondary">获得什么</span>
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 w-full max-w-7xl">
+                    <!-- Technical Skills -->
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-2xl font-bold mb-4">技术技能</h3>
+                        <ul class="space-y-3 text-gray-200">
+                            <li>精通 Python 编程</li>
+                            <li>AI/ML 基础与应用</li>
+                            <li>全栈开发经验</li>
+                            <li>带演示的 GitHub 作品集</li>
+                        </ul>
+                    </div>
+                    <!-- Future-Ready Skills -->
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-2xl font-bold mb-4">未来就绪技能</h3>
+                        <ul class="space-y-3 text-gray-200">
+                            <li>解决问题的韧性</li>
+                            <li>独立学习能力</li>
+                            <li>技术沟通能力</li>
+                            <li>创意技术应用</li>
+                        </ul>
+                    </div>
+                    <!-- College & Career -->
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-2xl font-bold mb-4">大学与职业</h3>
+                        <ul class="space-y-3 text-gray-200">
+                            <li>出色的申请材料</li>
+                            <li>面试的绝佳谈资</li>
+                            <li>在 CS 课程上抢先一步</li>
+                            <li>科技领域的专业人脉</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 10: 成果 & 评价 -->
+            <div class="slide bg-white">
+                <h2 class="text-4xl md:text-5xl font-black text-dark mb-12 text-center absolute top-16">
+                    成果<span class="gradient-text">与评价</span>
+                </h2>
+                <div class="grid grid-cols-2 gap-12 w-full max-w-6xl items-center">
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="text-center p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <div class="text-5xl font-black text-primary mb-2">85%</div>
+                            <p class="text-sm text-gray-600">在大学申请中使用了项目</p>
+                        </div>
+                        <div class="text-center p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <div class="text-5xl font-black text-primary mb-2">12+</div>
+                            <p class="text-sm text-gray-600">名学生获得了技术实习</p>
+                        </div>
+                        <div class="text-center p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <div class="text-5xl font-black text-primary mb-2">70%</div>
+                            <p class="text-sm text-gray-600">在课程结束后继续构建</p>
+                        </div>
+                        <div class="text-center p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <div class="text-5xl font-black text-primary mb-2">96%</div>
+                            <p class="text-sm text-gray-600">的家长会推荐此课程</p>
+                        </div>
+                    </div>
+                    <!-- Testimonial -->
+                    <div class="bg-gradient-to-br from-teal-50 to-white p-8 rounded-2xl shadow-lg border border-teal-100">
+                        <div class="flex text-yellow-400 text-xl mb-4">★★★★★</div>
+                        <p class="text-gray-700 text-lg mb-6 italic">"我的 14 岁孩子从玩视频游戏变成了构建 AI 聊天机器人。现在她开始谈论想在大学学习计算机科学——这是我从未想过的。"</p>
+                        <p class="font-semibold text-dark">— 课程 3 毕业生家长</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 11: 课程详情 -->
+            <div class="slide bg-gradient-to-br from-slate-50 to-blue-50">
+                 <h2 class="text-4xl md:text-5xl font-black text-dark mb-12 text-center absolute top-16">
+                    课程<span class="gradient-text">详情</span>
+                </h2>
+                <div class="grid grid-cols-2 gap-8 w-full max-w-4xl">
+                    <!-- Schedule -->
+                    <div class="bg-white rounded-2xl shadow-xl p-8 border border-blue-100">
+                        <h3 class="text-2xl font-bold text-dark mb-6">日程与承诺</h3>
+                        <div class="space-y-4 text-lg">
+                            <div class="flex items-start">
+                                <p class="font-semibold text-dark w-28">时长</p>
+                                <p class="text-gray-600">20 周 (3 个课程)</p>
+                            </div>
+                            <div class="flex items-start">
+                                <p class="font-semibold text-dark w-28">时间投入</p>
+                                <p class="text-gray-600">每周 4-6 小时</p>
+                            </div>
+                            <div class="flex items-start">
+                                <p class="font-semibold text-dark w-28">形式</p>
+                                <p class="text-gray-600">实时在线课程 + 自定进度的项目</p>
+                            </div>
+                            <div class="flex items-start">
+                                <p class="font-semibold text-dark w-28">班级规模</p>
+                                <p class="text-gray-600">最多 12 名学生</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Perfect for All Levels -->
+                    <div class="bg-gradient-to-r from-primary to-blue-600 text-white rounded-2xl shadow-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-center">适合所有水平的学生</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-lg">完全初学者</h4>
+                                <p class="text-blue-100 text-sm">从零开始。耐心的指导和 AI 辅助工具让学习变得快速而有趣。</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">有一些经验</h4>
+                                <p class="text-blue-100 text-sm">可以跳过部分内容或接受高级挑战。课程 2 对您来说仍将是全新的。</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">高级学生</h4>
+                                <p class="text-blue-100 text-sm">指导同伴，扩展项目，并深入研究前沿的 AI 概念。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 12: 家长评价 -->
+            <div class="slide bg-white">
+                <h2 class="text-4xl md:text-5xl font-black text-dark mb-12 text-center absolute top-16">
+                    <span class="gradient-text">家长们</span>怎么说
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 w-full max-w-7xl">
+                    <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg border border-blue-100">
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 text-xl">★★★★★</div>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">"我的 14 岁孩子从玩视频游戏变成了构建 AI 聊天机器人。现在她开始谈论想在大学学习计算机科学——这是我从未想过的。"</p>
+                        <p class="font-semibold text-dark">— 课程 3 毕业生家长</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-teal-50 to-white p-8 rounded-2xl shadow-lg border border-teal-100">
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 text-xl">★★★★★</div>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">"作品集项目让我的儿子在高中面试中有东西可谈。他脱颖而出，因为他可以演示他自己构建的真实 AI 应用程序。"</p>
+                        <p class="font-semibold text-dark">— 完整训练营毕业生家长</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl shadow-lg border border-purple-100">
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 text-xl">★★★★★</div>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic">"我曾怀疑一个 12 岁的孩子是否能处理这些材料，但教学方法让它变得易于理解。我女儿的信心猛增。"</p>
+                        <p class="font-semibold text-dark">— 课程 1 毕业生家长</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 13: 结束页 -->
+            <div class="slide hero-gradient text-white text-center">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-4xl">AI</span>
+                    </div>
+                    <span class="text-5xl font-bold">精英训练营</span>
+                </div>
+                <p class="text-3xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    赋能下一代 AI 创新者
+                </p>
+                <h2 class="text-7xl font-black gradient-text">
+                    谢谢
+                </h2>
+            </div>
+
+
+        </div> <!-- 结束 #slide-track -->
+
+        <!-- 
+          导航按钮 (上一张/下一张)
+        -->
+        <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-white/30 hover:bg-white/50 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-white/30 hover:bg-white/50 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+
+        <!-- 
+          页码计数器
+        -->
+        <div id="slide-counter" class="absolute bottom-4 right-6 z-50 bg-black/30 text-white text-sm px-3 py-1 rounded-full">
+            1 / 13
+        </div>
+
+    </div> <!-- 结束 16:9 滚动容器 -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slideTrack = document.getElementById('slide-track');
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+            const slideCounter = document.getElementById('slide-counter');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            // **修正**: 移除这一行。
+            // 这一行会导致 .slide 的 'width: 100%' 被错误地计算为父容器(轨道)的 1300%
+            // slideTrack.style.width = `${totalSlides * 100}%`;
+
+            function showSlide(slideIndex) {
+                // 边界检查
+                if (slideIndex < 0) {
+                    slideIndex = 0;
+                }
+                if (slideIndex >= totalSlides) {
+                    slideIndex = totalSlides - 1;
+                }
+
+                // **修正**:
+                // 1. 获取 "舞台" (stage) 容器的实际宽度 (以像素为单位)。
+                //    我们使用 slideTrack.parentElement 来获取 stage，这样更健壮。
+                const stageWidth = slideTrack.parentElement.offsetWidth;
+
+                // 2. 计算新的 transform 值 (以像素为单位)，而不是百分比。
+                //    这将使轨道平移 (当前幻灯片索引 * 舞台宽度) 的距离。
+                slideTrack.style.transform = `translateX(-${slideIndex * stageWidth}px)`;
+                
+                currentSlide = slideIndex;
+
+                // 更新页码
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+                // **修正**: 恢复被截断的代码
+                // 更新按钮状态
+                prevButton.disabled = currentSlide === 0;
+                nextButton.disabled = currentSlide === totalSlides - 1;
+                prevButton.style.opacity = currentSlide === 0 ? '0.3' : '1';
+                nextButton.style.opacity = currentSlide === totalSlides - 1 ? '0.3' : '1';
+            }
+
+            // 按钮点击事件
+            prevButton.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+            });
+
+            nextButton.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+            });
+
+            // 键盘导航事件
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+                    // 阻止空格键的默认滚动行为
+                    e.preventDefault(); 
+                    showSlide(currentSlide + 1);
+                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+                    e.preventDefault();
+                    showSlide(currentSlide - 1);
+                }
+            });
+
+            // 初始化
+            showSlide(0);
+        });
+    </script>
+
+</body>
+</html>
+
