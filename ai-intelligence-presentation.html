@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>How Machines Gain Intelligence?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,7 @@
             color: #00ff00;
             width: 100vw;
             height: 100vh;
+            touch-action: pan-y;
         }
 
         .presentation-container {
@@ -45,6 +46,7 @@
             visibility: hidden;
             transition: opacity 0.5s ease-in-out;
             z-index: 1;
+            padding: 10px;
         }
 
         .slide.active {
@@ -54,49 +56,140 @@
         }
 
         .slide svg {
-            width: 95vw;
-            height: 95vh;
-            max-width: 1920px;
-            max-height: 1080px;
+            width: 100%;
+            height: 100%;
+            max-width: 100vw;
+            max-height: 100vh;
+            object-fit: contain;
         }
 
         .navigation {
             position: fixed;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 15px;
             z-index: 1000;
-            opacity: 0; /* Hidden by default */
+            opacity: 0.3;
             transition: opacity 0.3s ease-in-out;
         }
 
-        .presentation-container:hover .navigation {
-            opacity: 1; /* Appear on hover */
+        .navigation:hover,
+        .navigation:active {
+            opacity: 1;
         }
 
         button {
             padding: 12px 24px;
-            font-size: 1.2em; /* Increased font size slightly for pixel font */
+            font-size: 1.2em;
             background: #000;
-            border: 1px solid #00ff00;
+            border: 2px solid #00ff00;
             color: #00ff00;
             cursor: pointer;
             transition: all 0.3s;
             font-family: 'VT323', monospace;
             text-transform: uppercase;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
-        button:hover {
+        button:hover,
+        button:active {
             background: #00ff00;
             color: #000;
             box-shadow: 0 0 20px #00ff00;
         }
 
-    </style>
-    <style>
-        /* Matrix rain animation for SVG elements */
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            color: #00ff00;
+            font-size: 1.2em;
+            z-index: 1000;
+            opacity: 0.7;
+            font-family: 'VT323', monospace;
+        }
+
+        /* Touch swipe indicator */
+        .swipe-hint {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00ff00;
+            font-size: 1em;
+            opacity: 0.5;
+            z-index: 999;
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navigation {
+                bottom: 15px;
+                gap: 10px;
+                opacity: 0.6;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .slide-counter {
+                top: 10px;
+                right: 10px;
+                font-size: 1em;
+            }
+
+            .swipe-hint {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navigation {
+                bottom: 10px;
+                gap: 8px;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+
+            .slide {
+                padding: 5px;
+            }
+        }
+
+        /* Landscape mode on mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .navigation {
+                bottom: 10px;
+                right: 20px;
+                left: auto;
+                transform: none;
+            }
+
+            .slide-counter {
+                top: 10px;
+                left: 10px;
+                right: auto;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1920px) {
+            .slide svg {
+                max-width: 1920px;
+                max-height: 1080px;
+            }
+        }
+
         @keyframes matrixFall {
             from {
                 transform: translateY(-100px);
@@ -110,11 +203,17 @@
     </style>
 </head>
 <body>
+    <div class="slide-counter">
+        <span id="currentSlideNum">1</span> / <span id="totalSlideNum">18</span>
+    </div>
+
+    <div class="swipe-hint">← Swipe or tap buttons →</div>
+
     <div class="presentation-container">
 
         <!-- Slide 1: Title -->
         <div class="slide active">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 
                 <!-- Grid pattern and animation -->
@@ -191,7 +290,7 @@
 
         <!-- Slide 2: Overview -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -233,7 +332,7 @@
 
         <!-- Slide 3: Why Language? -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -278,7 +377,7 @@
 
         <!-- Slide 4: Language Models are Bayesians -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -333,7 +432,7 @@
 
         <!-- Slide 5: Evolution of Architectures -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -404,7 +503,7 @@
 
         <!-- Slide 6: BERT vs GPT -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -459,7 +558,7 @@
 
         <!-- Slide 7: Scaling Laws -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -507,7 +606,7 @@
 
         <!-- Slide 8: Emergent Abilities -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -552,7 +651,7 @@
 
         <!-- Slide 9: The Hallucination Problem -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -589,7 +688,7 @@
 
         <!-- Slide 10: Code and Reasoning -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -639,7 +738,7 @@
 
         <!-- Slide 11: RLHF and ChatGPT -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -685,7 +784,7 @@
 
         <!-- Slide 12: Deep Reasoning -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -714,7 +813,7 @@
 
         <!-- Slide 13: Reinforcement for Reasoning -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -749,7 +848,7 @@
 
         <!-- Slide 14: Path to AGI -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -810,7 +909,7 @@
 
         <!-- Slide 15: Hinton's Perspective -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -838,7 +937,7 @@
 
         <!-- Slide 16: Questions for Discussion -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -864,7 +963,7 @@
 
         <!-- Slide 17: Key Takeaways -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -895,7 +994,7 @@
 
         <!-- Slide 18: Thank You -->
         <div class="slide">
-            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                 <rect width="1920" height="1080" fill="#000000"/>
                 <rect width="1920" height="1080" fill="url(#grid1)" opacity="0.3"/>
                 
@@ -977,6 +1076,13 @@
         let currentSlide = 1;
         const totalSlides = document.querySelectorAll('.slide').length;
         
+        // Update counter
+        document.getElementById('totalSlideNum').textContent = totalSlides;
+        
+        function updateSlideCounter() {
+            document.getElementById('currentSlideNum').textContent = currentSlide;
+        }
+        
         function transitionSlides(newSlideNumber, oldSlideNumber) {
             const slides = document.querySelectorAll('.slide');
             const newSlideIndex = newSlideNumber - 1;
@@ -993,6 +1099,8 @@
             if (slides[newSlideIndex]) {
                 slides[newSlideIndex].classList.add('active');
             }
+            
+            updateSlideCounter();
         }
 
         function nextSlide() {
@@ -1018,15 +1126,76 @@
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
                 nextSlide();
             } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
                 previousSlide();
+            }
+        });
+
+        // Touch/Swipe navigation for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) > minSwipeDistance) {
+                if (swipeDistance > 0) {
+                    // Swipe right - previous slide
+                    previousSlide();
+                } else {
+                    // Swipe left - next slide
+                    nextSlide();
+                }
+            }
+        }
+
+        // Click/tap on sides of screen for navigation
+        document.addEventListener('click', (e) => {
+            // Don't trigger if clicking on buttons
+            if (e.target.tagName === 'BUTTON') return;
+            
+            const screenWidth = window.innerWidth;
+            const clickX = e.clientX;
+            
+            // Click on left 20% goes to previous, right 20% goes to next
+            if (clickX < screenWidth * 0.2) {
+                previousSlide();
+            } else if (clickX > screenWidth * 0.8) {
+                nextSlide();
             }
         });
 
         // Initialize - show first slide without animation
         const slides = document.querySelectorAll('.slide');
         slides[0].classList.add('active');
+        updateSlideCounter();
+
+        // Hide swipe hint after first interaction
+        let hintHidden = false;
+        function hideSwipeHint() {
+            if (!hintHidden) {
+                const hint = document.querySelector('.swipe-hint');
+                if (hint) {
+                    hint.style.display = 'none';
+                    hintHidden = true;
+                }
+            }
+        }
+
+        document.addEventListener('touchend', hideSwipeHint);
+        document.addEventListener('keydown', hideSwipeHint);
     </script>
 </body>
 </html>
